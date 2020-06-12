@@ -26,6 +26,6 @@ function addComment($billetId, $auteur, $commentaire)
         die('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: index.php?action=billet&id=' . $billetId);
+        header('Location: index.php?action=billet&id=' . $billetId . '&billet='. $billetId);
     }
 }

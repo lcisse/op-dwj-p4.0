@@ -24,7 +24,7 @@ if (isset($_GET['action'])) {
             }
         }
         else {
-            //echo 'test';
+            echo 'test';
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }

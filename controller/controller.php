@@ -1,18 +1,28 @@
 <?php
 
-require('model/model.php');
+//require('model/model.php');
+// Chargement des classes
+require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
 
 function listBillets()
 {
-    $req = getBillets();
+    //$req = getBillets();
+    $postManager = new PostManager(); 
+    $req = $postManager->getBillets();
 
     require('views/affichageArticles.php');
 }
 
 function billet()
 {
-    $billet = getBillet($_GET['billet']);
-    $comments = getComments($_GET['billet']);
+    //$billet = getBillet($_GET['billet']);
+    //$comments = getComments($_GET['billet']);
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+
+    $billet = $postManager->getBillet($_GET['billet']);
+    $comments = $commentManager->getComments($_GET['billet']);
 
     require('views/article-commentaire.php');
 }
@@ -20,10 +30,13 @@ function billet()
 //ajout commentaire
 function addComment($billetId, $auteur, $commentaire)
 {
-    $affectedLines = postComment($billetId, $auteur, $commentaire);
+    //$affectedLines = postComment($billetId, $auteur, $commentaire);
+    $commentManager = new CommentManager();
+
+    $affectedLines = $commentManager->postComment($billetId, $auteur, $commentaire);
 
     if ($affectedLines === false) {
-        die('Impossible d\'ajouter le commentaire !');
+        throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
         header('Location: index.php?action=billet&id=' . $billetId . '&billet='. $billetId);

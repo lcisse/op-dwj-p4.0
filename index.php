@@ -1,34 +1,39 @@
 <?php
 require('controller/controller.php');
 
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'listBillets') {
-        listBillets();
-    }
-    elseif ($_GET['action'] == 'billet') {
-        if (isset($_GET['billet']) && $_GET['billet'] > 0) {
-            billet();
-        }
-        else {
-        	echo 'test';
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
-    elseif ($_GET['action'] == 'addComment') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            if (!empty($_POST['auteur']) && !empty($_POST['commentaire'])) {
-                addComment($_GET['id'], $_POST['auteur'], $_POST['commentaire']);
-            }
-            else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
-            }
-        }
-        else {
-            echo 'test';
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
+try{ 
+	if (isset($_GET['action'])) {
+	    if ($_GET['action'] == 'listBillets') {
+	        listBillets();
+	    }
+	    elseif ($_GET['action'] == 'billet') {
+	        if (isset($_GET['billet']) && $_GET['billet'] > 0) {
+	            billet();
+	        }
+	        else {
+	            throw new Exception('Aucun identifiant de billet envoyé');
+	        }
+	    }
+	    elseif ($_GET['action'] == 'addComment') {
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	            if (!empty($_POST['auteur']) && !empty($_POST['commentaire'])) {
+	                addComment($_GET['id'], $_POST['auteur'], $_POST['commentaire']);
+	            }
+	            else {
+	                throw new Exception('Tous les champs ne sont pas remplis !');
+	            }
+	        }
+	        else {
+	            throw new Exception('Aucun identifiant de billet envoyé');
+	        }
+	    }
+	}
+	else {
+	    listBillets();
+	}
 }
-else {
-    listBillets();
+catch(Exception $e) { // En cas d'erreur
+    echo 'Erreur : ' . $e->getMessage();
+    //$errorMessage = $e->getMessage();
+    //require('affichageErreur.php');
 }

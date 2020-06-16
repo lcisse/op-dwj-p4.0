@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +30,7 @@
         <section>
         	<div class="container">
                 <div class="row" id="form-row">
-                    <form action="" method="POST" class="form-inline" style="margin: 50px;">
+                    <form action="connexion.php" method="POST" class="form-inline" style="margin: 50px;">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" class="form-control"
@@ -35,12 +41,37 @@
                             <input type="password" name="password" id="password" class="form-control"
                             style="margin: 30px;">
                         </div>
-                        <button type="submit" class="btn btn-default btn-lg">Validez</button>
+                        <button type="submit" class="btn btn-default btn-lg" name="okConnexion">Validez</button>
                     </form>
                 </div>
             </div>
         	
         </section>
+
+        <?php
+        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+    
+if(isset($_POST['okConnexion']))
+{
+    if(!empty($_POST['pseudo']) AND !empty($_POST['password'])){
+        $motDePasse = 'admin';
+        $pseudo = 'admin';
+        if($_POST['pseudo'] == $pseudo){
+            if($_POST['password'] == $motDePasse){
+                $_SESSION['motDePasse'] = $motDePasse;
+                header('location: admin.php');
+            }else{
+                echo "Mot de passe incorrect...";
+            }
+        }else{
+            echo "Pseudo incorrect...";
+        }        
+    }else{
+        echo "Veillez compléter tous les champs...";
+    }        
+}
+
+        ?>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

@@ -1,5 +1,7 @@
 <?php
-class PostManager
+require_once("model/Manager.php");
+
+class PostManager extends Manager
 {
 	public function getBillets()
 	{ 
@@ -24,13 +26,5 @@ class PostManager
 
 	    return $billet;
 
-	}
-
-	//connexion a la bdd
-	private function dbConnect()
-	{
-	    $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-	    return $bdd;
-	    
 	}
 }

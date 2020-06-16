@@ -9,7 +9,7 @@ function listBillets()
     $postManager = new PostManager(); 
     $req = $postManager->getBillets();
 
-    require('views/affichageArticles.php');
+    require('views/articles.php');
 }
 
 function billet()
@@ -22,7 +22,7 @@ function billet()
     $billet = $postManager->getBillet($_GET['billet']);
     $comments = $commentManager->getComments($_GET['billet']);
 
-    require('views/article-commentaire.php');
+    require('views/articleCommentaire.php');
 }
 
 //ajout commentaire

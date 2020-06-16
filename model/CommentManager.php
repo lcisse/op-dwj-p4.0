@@ -1,5 +1,7 @@
 <?php
-class CommentManager
+require_once("model/Manager.php");
+
+class CommentManager extends Manager
 {
 	public function getcomments($billetId)
 	{
@@ -24,11 +26,4 @@ class CommentManager
 	    return $affectedLines;
 	}
 
-	//connexion a la bdd
-	private function dbConnect()
-	{
-	    $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-	    return $bdd;
-	    
-	}
 }

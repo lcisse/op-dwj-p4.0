@@ -27,11 +27,23 @@ if(!$_SESSION['motDePasse']){
             </div>          
         </header>
 
-        <section>
-        <div class="container" style="color: blue; margin-top: 10px;" >
-        	<h1>Bienvenue dans votre espace d'administration...</h1>
-        </div>	
-        <?php include("sections-pages/menuAdmin.php"); ?>	
+        <section>	
+        <?php include("sections-pages/menuAdmin.php"); ?>
+
+        <?php
+        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        $selectAllArticles = $bdd->query('SELECT * FROM billets');
+
+        while ($allArticles = $selectAllArticles->fetch())
+            {
+            ?>
+                <div class="container" style="margin-top: 20px;">
+            		<p><strong><?php echo $allArticles['titre'];?></strong> <a href="modifierArticle.php?id=<?php echo $allArticles['id']; ?>">Modifier</a></p> <hr>
+            	</div>
+            <?php	
+            }
+            ?>
+        	
         	
         </section>
 

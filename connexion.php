@@ -50,26 +50,32 @@ session_start();
 
         <?php
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+
+        $admin = $bdd->prepare('SELECT COUNT(*) AS nbAdmin FROM administrateurs WHERE pseudo = ? and mot_de_passe = ? ');
     
-if(isset($_POST['okConnexion']))
-{
-    if(!empty($_POST['pseudo']) AND !empty($_POST['password'])){
-        $motDePasse = 'admin';
-        $pseudo = 'admin';
-        if($_POST['pseudo'] == $pseudo){
-            if($_POST['password'] == $motDePasse){
-                $_SESSION['motDePasse'] = $motDePasse;
-                header('location: admin.php');
+        if(isset($_POST['okConnexion']))
+        {
+            if(!empty($_POST['pseudo']) AND !empty($_POST['password'])){
+
+                $admin->execute(array($_POST['pseudo'], ($_POST['password'])));
+
+                $dataAdmin = $admin->fetch();
+                $motDePasse = 'admin';
+                //$pseudo = 'admin';
+                if(/*$_POST['pseudo'] == $pseudo*/ $dataAdmin['nbAdmin'] > 0){
+                    //if($_POST['password'] == $motDePasse){
+                        $_SESSION['motDePasse'] = $motDePasse;
+                        header('location: admin.php');
+                   /* }else{
+                        echo "Mot de passe incorrect...";
+                    }*/
+                }else{
+                    echo "Les informations que vous avez saisis ne sont pas correct...";
+                }        
             }else{
-                echo "Mot de passe incorrect...";
-            }
-        }else{
-            echo "Pseudo incorrect...";
-        }        
-    }else{
-        echo "Veillez compléter tous les champs...";
-    }        
-}
+                echo "Veillez compléter tous les champs...";
+            }        
+        }
 
         ?>
 

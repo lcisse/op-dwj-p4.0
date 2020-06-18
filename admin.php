@@ -15,10 +15,20 @@ if(!$_SESSION['motDePasse']){
     </head>
  
     <body>
+    	<header>
+        	<?php include("sections-pages/barre-menu.php"); ?> 
+
+        	<div class="container-pluid" >
+                <div class="row">
+                    <div class="col-xs-12" id="image-header">
+                        <img src="public/images/image1.jpg" class="img-responsive" />
+                    </div>
+                </div>
+            </div>          
+        </header>
+
         <section>
-        <div class="container">
-        	<button class="btn btn-default btn-lg"><a href="deconnexion.php">Se déconnectez</a></button>
-        </div>	
+        <?php include("sections-pages/menuAdmin.php"); ?>	
         	
         </section>
 

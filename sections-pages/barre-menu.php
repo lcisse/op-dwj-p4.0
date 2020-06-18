@@ -17,6 +17,10 @@
             </li>
             <a type="button"  class="nav-link btn btn-default font-weight-bold text-uppercase px-3" href="connexion.php" style="background-color: white;">Se connecter</a>
             <a type="button"  class="nav-link text-light btn btn-default font-weight-bold text-uppercase px-3" href="inscription.php">S'inscrire</a>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="admin.php">Admin</a>
+            </li>
     </div>
 </nav>
             <!-- END OF NAV -->   

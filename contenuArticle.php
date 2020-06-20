@@ -3,6 +3,18 @@ session_start();
 if(!$_SESSION['motDePasse']){
 	header('location: connexion.php');
 }
+
+$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+
+if(isset($_GET['id']) AND !empty($_GET['id'])){
+	$selectInfoArticle = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
+
+	$selectInfoArticle->execute(array($_GET['id']));
+
+	$infoArticles = $selectInfoArticle->fetch();
+}else{
+	echo "Article introuvable...";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,37 +28,26 @@ if(!$_SESSION['motDePasse']){
  
     <body>
     	<header>
-        	<?php include("sections-pages/barre-menu.php"); ?> 
+        	<?php include("sections-pages/barre-menu.php"); ?>
 
-        	<div class="container-pluid" >
+            <div class="container-pluid" >
                 <div class="row">
                     <div class="col-xs-12" id="image-header">
                         <img src="public/images/image1.jpg" class="img-responsive" />
                     </div>
                 </div>
-            </div>          
+            </div>           
         </header>
-
-        <section>	
-        <?php include("sections-pages/menuAdmin.php"); ?>
-
-        <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectAllArticles = $bdd->query('SELECT * FROM billets');
-
-        while ($allArticles = $selectAllArticles->fetch())
-            {
-            ?>
-                <div class="container" style="margin-top: 20px;">
-            		<p><a href="contenuArticle.php?id= <?php echo $allArticles['id']; ?>"><strong><?php echo $allArticles['titre'];?></strong></a> <a href="modifierArticle.php?id=<?php echo $allArticles['id']; ?>">Modifier</a>  <a href="deleteArticle.php?id=<?php echo $allArticles['id']; ?>" style="color: red;" >Supprimer</a></p> <hr>
-            	</div>
-            <?php	
-            }
-            ?>
-        	
+        <section>
+            <?php include("sections-pages/menuAdmin.php"); ?>
+        </section>
+        <div class="container">
+            <h1><?php echo htmlspecialchars($infoArticles['titre']); ?></h1>
+            <div id="date-article"><em><?php echo $infoArticles['date_billet']; ?></</em></div>
+            <p><?php echo nl2br(htmlspecialchars($infoArticles['contenu'])); ?></p>    
+        </div>	
         	
         </section>
-
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -51,13 +49,13 @@ session_start();
         <?php
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
 
-        $admin = $bdd->prepare('SELECT COUNT(*) AS nbAdmin FROM administrateurs WHERE pseudo = ? and mot_de_passe = ? ');
+        $admin = $bdd->prepare('SELECT COUNT(*) AS nbAdmin FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ? and roles = ?');
     
         if(isset($_POST['okConnexion']))
         {
             if(!empty($_POST['pseudo']) AND !empty($_POST['password'])){
 
-                $admin->execute(array($_POST['pseudo'], ($_POST['password'])));
+                $admin->execute(array($_POST['pseudo'], ($_POST['password']), ('administrateur')));
 
                 $dataAdmin = $admin->fetch();
                 $motDePasse = 'admin';

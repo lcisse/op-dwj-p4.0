@@ -12,13 +12,6 @@ if(!$_SESSION['motDePasse']){
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-        <script src="https://cdn.tiny.cloud/1/pei3vqv8oenlhvcich45zlq9l059k6xewy2bqch043ae4zvl/tinymce/5/tinymce.min.js" referrerpolicy="origin"/></script>
-        <script>
-            tinymce.init({
-            selector: '#contenu'
-            });
-        </script>
     </head>
  
     <body>
@@ -36,43 +29,45 @@ if(!$_SESSION['motDePasse']){
         <section>
             <?php include("sections-pages/menuAdmin.php"); ?>
         </section>
+        <?php
+        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        if(isset($_GET['id']) AND !empty($_GET['id'])){
+            $selectInfoMembre = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = ?');
 
+            $selectInfoMembre->execute(array($_GET['id']));
+
+            $infoMembres = $selectInfoMembre->fetch();
+
+            if(isset($_POST['modifierMembre'])){
+                $pseudoModifie = htmlspecialchars($_POST['pseudo']);
+
+                $updatePseudoMembre = $bdd->prepare('UPDATE utilisateurs SET  pseudo = ? WHERE id = ?');
+
+                $updatePseudoMembre->execute(array($pseudoModifie, $_GET['id']));
+
+                header('location: gererMembres.php');
+
+            }
+        }else{
+            echo "L'utilisateur est introuvable...";
+        }
+   
+        ?>
         <section>
         <div class="container">
                 <div class="row" id="form-row">
-                    <form action="ajoutArticle.php" method="POST" style="margin: 50px">
+                    <form action="modifierMembre.php?id=<?= $_GET['id'];?>" method="POST" class="form-inline" style="margin: 50px;">
                         <div class="form-group">
-                            <label for="titre">Titre de l'article</label>
-                            <input type="text" name="titre" id="titre" class="form-control">
+                            <label for="pseudo">Pseudo</label>
+                            <input type="text" name="pseudo" id="pseudo" class="form-control"
+                            style="margin: 30px;" value="<?= $infoMembres['pseudo'] ;?>">
                         </div>
-                        <div class="form-group">
-                            <label for="contenu">Contenu de l'article</label>
-                            <textarea id="contenu" name="contenu" rows="5" cols="100" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" name="publication" class="btn btn-default btn-lg">Publiez</button>
+                        <button type="submit" class="btn btn-default btn-lg" name="modifierMembre">Validez</button>
                     </form>
                 </div>
             </div>	
         	
         </section>
-
-        <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        
-
-        if(isset($_POST['publication'])){
-            if(!empty($_POST['titre']) AND !empty($_POST['contenu'])){
-                $titre = htmlspecialchars($_POST['titre']);
-                $contenu = nl2br(htmlspecialchars($_POST['contenu']));
-
-                $addArticle = $bdd->prepare('INSERT INTO billets(titre, contenu, date_billet) VALUES(?,?, NOW())');
-                $addArticle->execute(array($titre, $contenu));
-                echo "L'article a bien été publié...";
-            }else{
-                echo "Veullez complétez tous les champs...";
-            }
-        }
-        ?>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

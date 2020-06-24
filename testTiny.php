@@ -1,9 +1,4 @@
-<?php
-session_start();
-if(!$_SESSION['motDePasse']){
-	header('location: connexion.php');
-}
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,63 +11,31 @@ if(!$_SESSION['motDePasse']){
         <script src="https://cdn.tiny.cloud/1/pei3vqv8oenlhvcich45zlq9l059k6xewy2bqch043ae4zvl/tinymce/5/tinymce.min.js" referrerpolicy="origin"/></script>
         <script>
             tinymce.init({
-            selector: '#contenu'
-            });
-        </script>
+            selector: '#mytextarea'
+        });
+  </script>
     </head>
  
     <body>
-    	<header>
-        	<?php include("sections-pages/barre-menu.php"); ?>
-
-            <div class="container-pluid" >
-                <div class="row">
-                    <div class="col-xs-12" id="image-header">
-                        <img src="public/images/image1.jpg" class="img-responsive" />
-                    </div>
-                </div>
-            </div>           
-        </header>
-        <section>
-            <?php include("sections-pages/menuAdmin.php"); ?>
-        </section>
-
+    	
         <section>
         <div class="container">
                 <div class="row" id="form-row">
-                    <form action="ajoutArticle.php" method="POST" style="margin: 50px">
+                    <form action="" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label for="titre">Titre de l'article</label>
-                            <input type="text" name="titre" id="titre" class="form-control">
+                            <input type="text" name="titre" id="titre" class="form-control" value="">
                         </div>
                         <div class="form-group">
                             <label for="contenu">Contenu de l'article</label>
-                            <textarea id="contenu" name="contenu" rows="5" cols="100" class="form-control"></textarea>
+                            <textarea id="mytextarea" name="contenu" rows="5" cols="100" class="form-control"></textarea>
                         </div>
-                        <button type="submit" name="publication" class="btn btn-default btn-lg">Publiez</button>
+                        <button type="submit" name="pubModification" class="btn btn-default btn-lg">Publiez</button>
                     </form>
                 </div>
             </div>	
         	
         </section>
-
-        <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        
-
-        if(isset($_POST['publication'])){
-            if(!empty($_POST['titre']) AND !empty($_POST['contenu'])){
-                $titre = htmlspecialchars($_POST['titre']);
-                $contenu = nl2br(htmlspecialchars($_POST['contenu']));
-
-                $addArticle = $bdd->prepare('INSERT INTO billets(titre, contenu, date_billet) VALUES(?,?, NOW())');
-                $addArticle->execute(array($titre, $contenu));
-                echo "L'article a bien été publié...";
-            }else{
-                echo "Veullez complétez tous les champs...";
-            }
-        }
-        ?>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

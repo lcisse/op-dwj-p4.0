@@ -24,10 +24,10 @@
         <section>
         	<div class="container">
                 <div class="row" id="form-row">
-                    <form action="" method="POST" style="margin: 50px">
+                    <form action="inscription.php" method="POST" style="margin: 50px">
                         <div class="form-group">
-                            <label>Pseudo</label>
-                            <input type="text" name="nom" id="nom" class="form-control">
+                            <label for="pseudo">Pseudo</label>
+                            <input type="text" name="pseudo" id="pseudo" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="email">Mail</label>
@@ -41,10 +41,35 @@
                             <label for="conf-password">Confirmez votre mot de passe</label>
                             <input type="password" name="conf-password" id="conf-password" class="form-control">
                         </div>                        
-                        <button type="submit" class="btn btn-default btn-lg">Envoyer</button>
+                        <button type="submit" class="btn btn-default btn-lg" name="validez">Validez</button>
                     </form>
                 </div>
             </div>
+
+
+            <?php
+            $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+
+            if (isset($_POST['validez'])) {
+                if(!empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['conf-password'])){
+                    if ($_POST['password'] == $_POST['conf-password']) {
+
+                        $pseudo = htmlspecialchars($_POST['pseudo']);
+                        $email = htmlspecialchars($_POST['email']);
+                        $mdp = sha1($_POST['password']);
+
+                        $insererMembre = $bdd->prepare('INSERT INTO utilisateurs(pseudo, mail, mot_de_passe, roles, date_inscription) VALUES(?, ?, ?, ?, NOW())');
+                        $insererMembre->execute(array($pseudo, $email, $mdp, ('visiteur')));
+                        header('location: connexion.php');
+                    }else{
+                        echo ('Les mots de passe ne correspondent pas... !');
+                    }
+                }else{
+                    echo "Veillez remplir tous les champs... !";
+                }
+             } 
+
+            ?>
         	
         </section>
 

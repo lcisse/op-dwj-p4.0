@@ -26,4 +26,12 @@ class CommentManager extends Manager
 	    return $affectedLines;
 	}
 
+	public function signaleCommentaire($idCommentaire)
+	{
+		$bdd = $this->dbConnect();
+		$commentaireSignale = $bdd->prepare('UPDATE commentaires SET commentaires_signales = :signaler where id = :idCommentaire');
+                $commentaireSignale->execute(array('signaler' => 'signaler', 'idCommentaire' => $idCommentaire));
+        return $commentaireSignale;
+	}
+
 }

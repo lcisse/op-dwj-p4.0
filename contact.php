@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!$_SESSION['admin']) {
+    $_SESSION['admin'] = ' ';
+    $_SESSION['inscription'] = "S'inscrire";
+    $_SESSION['deconnecter'] = "Se connecter";
+    $_SESSION['deconnection'] = "connexion";
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>

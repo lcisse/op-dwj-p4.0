@@ -1,4 +1,12 @@
-
+<?php
+session_start();
+if (!$_SESSION['admin']) {
+    $_SESSION['admin'] = ' ';
+    $_SESSION['inscription'] = "S'inscrire";
+    $_SESSION['deconnecter'] = "Se connecter";
+    $_SESSION['deconnection'] = "connexion";
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,3 +57,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
     </body>
 </html>
+
+<?php print_r($_SESSION) ?>
+echo '<pre>'
+echo '<pre>';
+print_r($_SESSION) ;echo '</pre>';
+

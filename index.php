@@ -27,6 +27,14 @@ try{
 	            throw new Exception('Aucun identifiant de billet envoyé');
 	        }
 	    }
+	    elseif($_GET['action'] == 'signale'){
+	    	//if (isset($_POST['signaler'])) {
+				commentaireSignale($_GET['idCom']);
+	    		//billet();
+			}else{
+				throw new Exception('Commentaire non signalé...!');
+			}
+	    //}
 	}
 	else {
 	    listBillets();

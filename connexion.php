@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (!$_SESSION['admin']) {
+    $_SESSION['admin'] = ' ';
+    $_SESSION['inscription'] = "S'inscrire";
+    $_SESSION['deconnecter'] = "Se connecter";
+    $_SESSION['deconnection'] = "connexion";
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,12 +69,19 @@ session_start();
                 $dataConnect = $connect->fetch();
                 $motDePasse = 'mdp';
                 $motDePasseUt = 'mdpUt';
-
+                //$_SESSION['admin'] = '';
                 if($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'administrateur'){
                     $_SESSION['motDePasse'] = $motDePasse;
+                    $_SESSION['admin'] = 'Admin';
+                    $_SESSION['inscription'] = " ";
+                    $_SESSION['deconnecter'] = "Se deconnecter";
+                    $_SESSION['deconnection'] = "deconnexion";
                     header('location: admin.php');
                 }elseif ($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'visiteur') {
                    $_SESSION['motDePasseUt'] = $motDePasseUt;
+                   $_SESSION['inscription'] = " ";
+                   $_SESSION['deconnecter'] = "Se deconnecter";
+                   $_SESSION['deconnection'] = "deconnexion";
                     header('location: espaceMembre.php');
                 }else{
                     echo "Pseudo ou mot de passe incorrect... !";

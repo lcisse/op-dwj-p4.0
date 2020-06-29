@@ -1,3 +1,4 @@
+
                         <!-- NAV -->
 <nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
     <a href="#"><i class="fas fa-anchor text-warning fa-2x"></i></a>
@@ -15,11 +16,11 @@
                 <li class="nav-item">
                 <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="Contact.php">Contact</a>
             </li>
-            <a type="button"  class="nav-link btn btn-default font-weight-bold text-uppercase px-3" href="connexion.php" style="background-color: white;">Se connecter</a>
-            <a type="button"  class="nav-link text-light btn btn-default font-weight-bold text-uppercase px-3" href="inscription.php">S'inscrire</a>
+            <a type="button"  class="nav-link btn btn-default font-weight-bold text-uppercase px-3" href="<?php echo $_SESSION["deconnection"]; ?>.php" style="background-color: white;"><?php echo $_SESSION["deconnecter"]; ?></a>
+            <a type="button"  class="nav-link text-light btn btn-default font-weight-bold text-uppercase px-3" href="inscription.php"><?php echo $_SESSION["inscription"]; ?></a>
             </li>
                 <li class="nav-item">
-                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="admin.php">Admin</a>
+                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="admin.php"><?php echo $_SESSION['admin']; ?></a>
             </li>
     </div>
 </nav>

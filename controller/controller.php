@@ -43,9 +43,10 @@ function addComment($billetId, $auteur, $commentaire)
     }
 }
 
-function commentaireSignale($idCommentaire)
+function commentaireSignale()
 {
     $commentManager = new CommentManager();
-    $commentaireSignale = $commentManager->signaleCommentaire($idCommentaire);
+    $commentaireSignale = $commentManager->signaleCommentaire($_GET['idCom']);
     //require('views/articleCommentaire.php');
+    header('Location: index.php?action=billet&billet='.$_GET['billet']);
 }

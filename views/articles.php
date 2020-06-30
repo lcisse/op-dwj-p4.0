@@ -40,7 +40,7 @@ if (!$_SESSION['admin']) {
                 <div class="container">
                     <h1><?php echo htmlspecialchars($donnees['titre']); ?></h1>
                     <div id="date-article"><em><?php echo $donnees['date_billet']; ?></</em></div>
-                    <p><?php echo nl2br(htmlspecialchars($donnees['contenu'])); ?></p> 
+                    <p><?php echo html_entity_decode($donnees['contenu'], ENT_NOQUOTES); ?></p> 
                     <div id="commentaire"><a href="index.php?billet= <?php echo $donnees['id']; ?>&amp;action=billet"><p><strong>Commentaire</strong></p></a></div>   
                 </div>
             <?php

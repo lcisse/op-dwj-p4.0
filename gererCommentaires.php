@@ -31,7 +31,7 @@ if(!$_SESSION['motDePasse']){
         <?php include("sections-pages/menuAdmin.php"); ?>
 
         <div class="container" style="margin-top: 20px;">
-            <a href="" type="button" class="btn btn-outline-primary mb-2">Voir tous les commentaires</a>
+            <a href="commentaires.php" type="button" class="btn btn-outline-primary mb-2">Voir tous les commentaires</a>
             <a href="commentaireSignale" type="button" class="btn btn-outline-primary mb-2">Les commentaires signalés</a>
         </div>
         	

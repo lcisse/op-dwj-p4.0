@@ -45,7 +45,7 @@ if (!$_SESSION['admin']) {
             ?>
             <div class="container">
                 <p><strong><?php echo htmlspecialchars($comment['auteur']); ?></strong> le <?php echo $comment['date_commentaire']; ?></p>
-                <p><?php echo nl2br(htmlspecialchars($comment['commentaire'])); ?> <a class="btn btn-default" href="index.php?action=signale&amp;idCom=<?= $comment['id'] ?>" role="button" name="signaler"><strong style="color: orange;">Signalez.</strong></a></p>
+                <p><?php echo nl2br(htmlspecialchars($comment['commentaire'])); ?> <a class="btn btn-default" href="index.php?action=signale&amp;idCom=<?= $comment['id'] ?>&amp;billet= <?php echo $billet['id']; ?>" role="button" name="signaler"><strong style="color: orange;">Signalez.</strong></a></p>
             </div>
             <?php
             } // Fin de la boucle des commentaires

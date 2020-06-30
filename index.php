@@ -28,9 +28,7 @@ try{
 	        }
 	    }
 	    elseif($_GET['action'] == 'signale'){
-	    	//if (isset($_POST['signaler'])) {
-				commentaireSignale($_GET['idCom']);
-	    		//billet();
+				commentaireSignale();
 			}else{
 				throw new Exception('Commentaire non signalé...!');
 			}
@@ -42,6 +40,4 @@ try{
 }
 catch(Exception $e) { // En cas d'erreur
     echo 'Erreur : ' . $e->getMessage();
-    //$errorMessage = $e->getMessage();
-    //require('affichageErreur.php');
 }

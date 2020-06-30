@@ -8,12 +8,14 @@
         <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <script src="https://cdn.tiny.cloud/1/pei3vqv8oenlhvcich45zlq9l059k6xewy2bqch043ae4zvl/tinymce/5/tinymce.min.js" referrerpolicy="origin"/></script>
-        <script>
+        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
             tinymce.init({
-            selector: '#mytextarea'
-        });
-  </script>
+                selector: '#mytextarea',
+                plugins: 'code',
+                plugins: "link"
+            });
+        </script>
     </head>
  
     <body>

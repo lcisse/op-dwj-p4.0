@@ -6,6 +6,9 @@ try{
 	    if ($_GET['action'] == 'listBillets') {
 	        listBillets();
 	    }
+	    /*elseif ($_GET['action'] == 'accueil') {
+	    	lastBilletAccueil();
+	    }*/
 	    elseif ($_GET['action'] == 'billet') {
 	        if (isset($_GET['billet']) && $_GET['billet'] > 0) {
 	            billet();
@@ -35,7 +38,7 @@ try{
 	    //}
 	}
 	else {
-	    listBillets();
+	    lastBilletAccueil();
 	}
 }
 catch(Exception $e) { // En cas d'erreur

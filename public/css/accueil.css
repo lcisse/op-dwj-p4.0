@@ -1,0 +1,214 @@
+body{
+	kbackground-color: rgb(245,245,245);
+}
+#page{
+	background-color: rgb(245,245,245);
+}
+
+#image-header, img{
+	width: 100%;
+	height: 90px;
+}
+
+nav{
+	display: flex;
+
+	background-color: rgb(0,119,127);
+	height: 90px;
+}
+
+#diapo{
+   width: 801px;         
+   margin-top: 30px;
+}
+
+#conteneur{
+  width: 800px;
+  height: 420px;
+  border: 1px solid rgb(207,218,162);
+}
+#conteneur img{
+   width: 100%;
+   height: 100%;   
+}
+
+/* définition de l'animation sur les images */
+#conteneur img {
+  animation: fade-in-out 5s ease infinite 0s;
+  opacity: 0;
+}
+/* définition des étapes */
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0;
+  }
+  16.67% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  66.66% {
+    opacity: 1;
+  }
+  83% {
+    opacity: 1;
+  }
+}
+
+#diapoInfo{
+	display: flex;
+	justify-content: space-around;
+	padding: 0px 50px 0px 50px;
+	margin: 0px 50px 0px 50px;
+}
+
+#infoSite{
+	position: relative;
+	width: 350px;
+	height: 450px;
+	gborder: 2px solid red;
+	margin-top: 50px;
+	background-color: white;
+
+}
+
+#barreInfo1{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 350px;
+	height: 80px;
+	background-color: rgb(0,119,127);
+	color: white;
+}
+#barreInfo1 h2{
+	font-size: 1.5em;
+}
+
+#textInfo{
+	padding: 30px;
+}
+
+#barreInfo2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 350px;
+	height: 60px;
+	bottom: 0px;
+	background-color: rgb(45,45,45);
+}
+.fa {
+	cbackground-color: white;
+	font-size: 50px;
+	color: white;
+}
+.fab{
+	font-size: 30px;
+	color: white;
+	margin: 5px;
+}
+
+#derniereArticle{
+	height: 300px;
+	margin-top: 20px;
+}
+
+#derniereArticleImg{
+	height: 300px;
+	background-color: rgb(0,119,127); 
+}
+
+#derniereArticleImg img{
+	width: 100%;
+	height: 100%;
+}
+
+#derniereArticleTexte{
+	height: 300px;
+	background-color: white;
+	padding: 15px;
+}
+
+footer{
+	height: 150px;
+	background-color: rgb(45,45,45);
+	margin-top: 50px;
+}
+
+@media all and (max-width: 640px)
+{
+	#diapo{
+       display: none;
+	}
+
+	#diapoInfo{
+	flex-direction: column;
+	justify-content: center;
+	padding: 0px;
+	margin: 0px;
+    }
+
+    #infoSite{
+	margin: auto;
+    }	
+}
+@media all and (min-width: 641px) and (max-width: 768px)
+{
+	#diapo{
+  	   width: 100%;         
+       margin-top: 30px;
+	}
+	#conteneur{
+       width: 710px;
+       height: 420px;
+       margin: 0px 10px 0px 10px;
+    }
+    #diapoInfo{
+	flex-direction: column;
+	justify-content: center;
+	padding: 0px;
+	margin: auto;
+    }
+    #infoSite{
+	margin: auto;
+    }
+
+}
+@media all and (min-width: 769px) and (max-width: 1200px)
+{
+	#diapo{
+  	   width: 100%;         
+	}
+	#conteneur{
+       width: 900px;
+       height: 420px;
+       margin: 0px 40px 0px 40px;
+
+    }
+    #diapoInfo{
+	justify-content: space-between;
+	flex-direction: column;
+	padding: 0px;
+	margin: 0px;
+    }
+    #infoSite{
+	margin: auto;
+    }	
+}
+
+
+
+
+
+
+
+
+
+
+

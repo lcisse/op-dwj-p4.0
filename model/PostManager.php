@@ -27,4 +27,15 @@ class PostManager extends Manager
 	    return $billet;
 
 	}
+
+	/*public function lastBillet()
+	{ 
+	    $bdd = $this->dbConnect();
+
+	    $article = $bdd->query('SELECT * FROM billets ORDER BY date_billet DESC LIMIT 1');
+
+	    $derniereArticle = $article->fetch();
+
+	    return $derniereArticle;
+	}*/
 }

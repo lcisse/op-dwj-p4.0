@@ -12,6 +12,15 @@ function listBillets()
     require('views/articles.php');
 }
 
+/*function lastBilletAccueil()
+{
+    //$req = getBillets();
+    $postManager = new PostManager(); 
+    $derniereArticle = $postManager->lastBillet();
+
+    require('accueil.php');
+}*/
+
 function billet()
 {
     //$billet = getBillet($_GET['billet']);

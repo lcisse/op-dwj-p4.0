@@ -19,8 +19,7 @@ function listBillets()
     $derniereArticle = $postManager->lastBillet();
 
     require('accueil.php');
-}*/
-
+*/
 function billet()
 {
     //$billet = getBillet($_GET['billet']);

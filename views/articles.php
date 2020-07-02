@@ -6,6 +6,9 @@ if (!$_SESSION['admin']) {
     $_SESSION['deconnecter'] = "Se connecter";
     $_SESSION['deconnection'] = "connexion";
 }
+/*if(!$_SESSION['motDePasse'] || !$_SESSION['motDePasseUt']){
+    header('location: connexion.php');
+}*/
 ?>
 <!DOCTYPE html>
 <html>

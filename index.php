@@ -38,7 +38,7 @@ try{
 	    //}
 	}
 	else {
-	    lastBilletAccueil();
+	    listBillets();
 	}
 }
 catch(Exception $e) { // En cas d'erreur

@@ -22,7 +22,6 @@ class CommentManager extends Manager
 	    $bdd = $this->dbConnect();
 	    $comments = $bdd->prepare('INSERT INTO commentaires(id_billet, auteur, commentaire, date_commentaire) VALUES(?, ?, ?, NOW())');
 	    $affectedLines = $comments->execute(array($billetId, $auteur, $commentaire));
-
 	    return $affectedLines;
 	}
 

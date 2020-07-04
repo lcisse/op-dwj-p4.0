@@ -16,7 +16,7 @@
                 <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="index.php">Articles</a>
             </li>
                 <li class="nav-item">
-                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="Contact.php">Contact</a>
+                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="contact.php">Contact</a>
             </li>
             <a type="button"  class="nav-link btn btn-default font-weight-bold text-uppercase px-3" href="<?php echo $_SESSION["deconnection"]; ?>.php" style="background-color: white;"><?php echo $_SESSION["deconnecter"]; ?></a>
             <a type="button"  class="nav-link text-light btn btn-default font-weight-bold text-uppercase px-3" href="inscription.php"><?php echo $_SESSION["inscription"]; ?></a>

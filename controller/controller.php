@@ -58,3 +58,17 @@ function commentaireSignale()
     //require('views/articleCommentaire.php');
     header('Location: index.php?action=billet&billet='.$_GET['billet']);
 }
+
+function addMessage($nom, $prenom, $email, $message){
+    $contactManager = new ContactManager();
+
+    $messageInsere = $contactManager ->postMessage($nom, $prenom, $email, $message);
+
+    if ($messageInsere === false) {
+        throw new Exception('Impossible d\'ajouter le message !');
+    }
+    else {
+        header('Location: index.php?action=contact');
+    }
+
+}

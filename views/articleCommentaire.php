@@ -6,6 +6,9 @@ if (!$_SESSION['admin']) {
     $_SESSION['deconnecter'] = "Se connecter";
     $_SESSION['deconnection'] = "connexion";
 }
+if(!$_SESSION['motDePasseUt']){
+    header('location: connexion.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +38,7 @@ if (!$_SESSION['admin']) {
             <div class="container">
                 <h1><?php echo htmlspecialchars($billet['titre']); ?></h1>
                 <div id="date-article"><strong><?php echo $billet['date_billet']; ?></strong></div>
-                <p><?php echo nl2br(htmlspecialchars($billet['contenu'])); ?></p> 
+                <p><?php echo html_entity_decode($billet['contenu']); ?></p> 
 
                 <div id="commentaire"><h2>Commentaires</h2></div>
             </div>

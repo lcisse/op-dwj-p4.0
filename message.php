@@ -8,7 +8,7 @@ if(!$_SESSION['motDePasse']){
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Articles</title>
+        <title>Les messages.</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -27,11 +27,29 @@ if(!$_SESSION['motDePasse']){
             </div>          
         </header>
 
-        <section>
-        <div class="container" id="titreAdmin">
-        	<h1>Bienvenue dans votre espace d'administration...</h1>
-        </div>	
-        <?php include("sections-pages/menuAdmin.php"); ?>	
+        <section>	
+        <?php include("sections-pages/menuAdmin.php"); ?>
+
+        <?php
+        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        $selectAllMessages = $bdd->query('SELECT * FROM contacts');
+        ?>
+
+        <div class="container" style="margin-top: 20px;"><h2>Vos messages.</h2></div>
+        
+        <?php        
+        while ($allMessages = $selectAllMessages->fetch())
+            {
+            ?>
+                <div class="container" style="margin-top: 20px;">
+            		<p><strong><?php echo $allMessages['prenom'];?> <?php echo $allMessages['nom'];?></strong> <em> <?php echo $allMessages['date_messages'];?></em></p> 
+                    <p> <?php echo $allMessages['messages'];?></p>
+                    <p><?php echo $allMessages['mail'];?></p> <hr>
+            	</div>
+            <?php	
+            }
+            ?>
+        	
         	
         </section>
 

@@ -72,6 +72,7 @@ if (!$_SESSION['admin']) {
                 //$_SESSION['admin'] = '';
                 if($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'administrateur'){
                     $_SESSION['motDePasse'] = $motDePasse;
+                    $_SESSION['motDePasseUt'] = $motDePasseUt;
                     $_SESSION['admin'] = 'Admin';
                     $_SESSION['inscription'] = " ";
                     $_SESSION['deconnecter'] = "Se deconnecter";
@@ -82,7 +83,7 @@ if (!$_SESSION['admin']) {
                    $_SESSION['inscription'] = " ";
                    $_SESSION['deconnecter'] = "Se deconnecter";
                    $_SESSION['deconnection'] = "deconnexion";
-                    header('location: espaceMembre.php');
+                    header('location: accueil.php');
                 }else{
                     echo "Pseudo ou mot de passe incorrect... !";
                 }

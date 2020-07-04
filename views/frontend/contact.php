@@ -33,7 +33,7 @@ if (!$_SESSION['admin']) {
         <section>
         	<div class="container">
                 <div class="row" id="form-row">
-                    <form action="index.php?action=contact" method="POST" style="margin: 50px">
+                    <form action="" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label>Nom</label>
                             <input type="text" name="nom" id="nom" class="form-control">
@@ -58,7 +58,7 @@ if (!$_SESSION['admin']) {
         </section>
         <section>
             <?php 
-            /*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
 
             if (isset($_POST['okmessage'])){
                 if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['message'])){
@@ -75,7 +75,7 @@ if (!$_SESSION['admin']) {
                     echo "Veillez remplir tous les champs... !";
                 }
 
-            }*/
+            }
 
 
 

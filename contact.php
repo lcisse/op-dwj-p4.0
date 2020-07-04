@@ -36,50 +36,25 @@ if (!$_SESSION['admin']) {
                     <form action="index.php?action=contact" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label>Nom</label>
-                            <input type="text" name="nom" id="nom" class="form-control">
+                            <input type="text" name="nom" id="nom" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" id="prenom" class="form-control">
+                            <input type="text" name="prenom" id="prenom" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Mail</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea id="Message" name="message" rows="5" cols="100" class="form-control"></textarea>
+                            <textarea id="Message" name="message" rows="5" cols="100" class="form-control" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-default btn-lg" name="okmessage">Envoyer</button>
                     </form>
                 </div>
             </div>
         	
-        </section>
-        <section>
-            <?php 
-            /*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-
-            if (isset($_POST['okmessage'])){
-                if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['message'])){
-                    $nom = htmlspecialchars($_POST['nom']);
-                    $prenom = htmlspecialchars($_POST['prenom']);
-                    $email = htmlspecialchars($_POST['email']);
-                    $message = htmlspecialchars($_POST['message']);
-
-                    $insererMessage = $bdd->prepare('INSERT INTO contacts(nom, prenom, mail, messages, date_messages) VALUES(?, ?, ?, ?, NOW())');
-                        $insererMessage->execute(array($nom, $prenom, $email, $message));
-
-                        echo "Message envoyé... !";
-                }else{
-                    echo "Veillez remplir tous les champs... !";
-                }
-
-            }*/
-
-
-
-             ?>
         </section>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"

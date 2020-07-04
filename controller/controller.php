@@ -2,6 +2,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/ContactManager.php');
 
 function listBillets()
 {
@@ -60,7 +61,7 @@ function commentaireSignale()
 }
 
 function addMessage($nom, $prenom, $email, $message){
-    $contactManager = new ContactManager();
+    $contactManager = new  ContactManager();
 
     $messageInsere = $contactManager ->postMessage($nom, $prenom, $email, $message);
 
@@ -68,7 +69,7 @@ function addMessage($nom, $prenom, $email, $message){
         throw new Exception('Impossible d\'ajouter le message !');
     }
     else {
-        header('Location: index.php?action=contact');
+        header('Location: contact.php?');
     }
 
 }

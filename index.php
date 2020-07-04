@@ -34,18 +34,16 @@ try{
 				commentaireSignale();
 		}
 		elseif ($_GET['action'] == 'contact'){
-			if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['message'])){
 
-				$nom = htmlspecialchars($_POST['nom']);
+			    $nom = htmlspecialchars($_POST['nom']);
                 $prenom = htmlspecialchars($_POST['prenom']);
                 $email = htmlspecialchars($_POST['email']);
                 $message = htmlspecialchars($_POST['message']);
 
+			if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['message'])){
+
                 addMessage($nom, $prenom, $email, $message);
-                echo "Message envoyé... !";
-			}else{
-				throw new Exception('Veillez remplir tous les champs... !');
-			}
+			}			
 		}
 	    
 	}

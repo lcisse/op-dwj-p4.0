@@ -14,9 +14,15 @@ class ContactManager extends Manager{
 
 	}
 
-	public function getMessage(){
+	/*public function getMessage(){
+
+		$bdd = $this->dbConnect();
+
+		$selectAllMessages = $bdd->query('SELECT * FROM contacts ORDER BY date_messages DESC');
+
+		return $selectAllMessages;
 		
-	}
+	}*/
 }
 
 ?>

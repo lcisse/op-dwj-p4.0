@@ -13,7 +13,7 @@
                 <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="about.php">A propos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="index.php">Articles</a>
+                <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="index.php?action=listBillets">Articles</a>
             </li>
                 <li class="nav-item">
                 <a class="nav-link text-light font-weight-bold text-uppercase px-3" href="contact.php">Contact</a>

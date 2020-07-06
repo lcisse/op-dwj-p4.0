@@ -32,7 +32,7 @@ if(!$_SESSION['motDePasse']){
 
         <?php
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectAllMessages = $bdd->query('SELECT * FROM contacts');
+        $selectAllMessages = $bdd->query('SELECT * FROM contacts ORDER BY date_messages DESC');
         ?>
 
         <div class="container" style="margin-top: 20px;"><h2>Vos messages.</h2></div>

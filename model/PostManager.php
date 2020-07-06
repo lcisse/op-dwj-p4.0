@@ -28,7 +28,7 @@ class PostManager extends Manager
 
 	}
 
-	/*public function lastBillet()
+	public function lastBillet()
 	{ 
 	    $bdd = $this->dbConnect();
 
@@ -37,5 +37,5 @@ class PostManager extends Manager
 	    $derniereArticle = $article->fetch();
 
 	    return $derniereArticle;
-	}*/
+	}
 }

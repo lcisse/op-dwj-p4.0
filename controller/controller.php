@@ -3,6 +3,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/ContactManager.php');
+require_once('model/ConnexionManager.php');
 
 function listBillets()
 {
@@ -13,14 +14,15 @@ function listBillets()
     require('views/articles.php');
 }
 
-/*function lastBilletAccueil()
+function lastBilletAccueil()
 {
     //$req = getBillets();
     $postManager = new PostManager(); 
     $derniereArticle = $postManager->lastBillet();
 
     require('accueil.php');
-*/
+}
+
 function billet()
 {
     //$billet = getBillet($_GET['billet']);
@@ -60,7 +62,8 @@ function commentaireSignale()
     header('Location: index.php?action=billet&billet='.$_GET['billet']);
 }
 
-function addMessage($nom, $prenom, $email, $message){
+function addMessage($nom, $prenom, $email, $message)
+{
     $contactManager = new  ContactManager();
 
     $messageInsere = $contactManager ->postMessage($nom, $prenom, $email, $message);
@@ -72,4 +75,21 @@ function addMessage($nom, $prenom, $email, $message){
         header('Location: contact.php?');
     }
 
+}
+
+/*    $contactManager = new  ContactManager();
+
+    $selectAllMessages = $contactManager ->getMessage();
+
+    require('message.php');
+
+}*/
+
+function checkUser()
+{
+   $connexionManager = new ConnexionManager();
+   
+   $connect =  $connexionManager ->connectUser();
+
+   require('connexion.php');
 }

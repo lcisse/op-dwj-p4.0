@@ -34,7 +34,7 @@ if (!$_SESSION['admin']) {
         <section>
         	<div class="container">
                 <div class="row" id="form-row">
-                    <form action="connexion.php" method="POST" class="form-inline" style="margin: 50px;">
+                    <form action="connexion.php?action=connexion" method="POST" class="form-inline" style="margin: 50px;">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" class="form-control"

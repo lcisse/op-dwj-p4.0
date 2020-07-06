@@ -3,5 +3,5 @@
     <button class="btn btn-default btn-lg"><a href="ajoutArticle.php">publier un article</a></button>
     <button class="btn btn-default btn-lg"><a href="gererMembres.php">Gérer les membres</a></button>
     <button class="btn btn-default btn-lg"><a href="gererCommentaires.php">Gérer les commentaires</a></button>
-    <button class="btn btn-default btn-lg"><a href="message.php">Les messages</a></button>
+    <button class="btn btn-default btn-lg"><a href="message.php?action=message">Les messages</a></button>
 </div>

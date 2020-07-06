@@ -55,14 +55,14 @@ if (!$_SESSION['admin']) {
             </div>
         </section>
 
-        <?php
+        <!--<?php/*
             $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
 
             $article = $bdd->query('SELECT * FROM billets ORDER BY date_billet DESC LIMIT 1');
 
-            $derniereArticle = $article->fetch();
+            $derniereArticle = $article->fetch();*/
 
-        ?>
+        ?>-->
         <section>
             <div class="container" id="derniereArticle">
                 <div class="row">

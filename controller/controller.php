@@ -1,5 +1,4 @@
 <?php
-session_start();
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
@@ -90,6 +89,7 @@ function listMessages()
 
 function checkUser($pseudo, $mdp)
 {
+    session_start();
    $connexionManager = new ConnexionManager();
    
    $connect =  $connexionManager ->connectUser($pseudo, $mdp);
@@ -158,26 +158,26 @@ function listMembres()
     require('gererMembres.php');
 }
 
-function infoMembre($pseudoModifie, $idMembre)
+function infoMembre($idMembre)
 {
     $user = new User();
 
     $infoMembres = $user->getInfoMembre($idMembre);
 
-    if(isset($_POST['modifierMembre'])){
+    /*if(isset($_POST['modifierMembre'])){
         $updatePseudoMembre = $user->modifieMembre($pseudoModifie, $idMembre);
                 header('location: gererMembres.php');
 
-    }
+    }*/
 
     require('modifierMembre.php');
 }
 
-/*function membreUpdate($pseudoModifie, $idMembre)
+function membreUpdate($pseudoModifie, $idMembre)
 {
     $user = new User();
 
     $updatePseudoMembre = $user->modifieMembre($pseudoModifie, $idMembre);
 
-    require('modifierMembre.php');
-}*/
+    header('location: index.php?action=membres');
+}

@@ -72,16 +72,16 @@ try{
 
 	    elseif ($_GET['action'] == 'postArticle') {
 	        if(isset($_POST['publication'])){
-            if(!empty($_POST['titre']) AND !empty($_POST['contenu'])){
-                $titre = htmlspecialchars($_POST['titre']);
-                $contenu = nl2br(htmlspecialchars($_POST['contenu']));
+	            if(!empty($_POST['titre']) AND !empty($_POST['contenu'])){
+	                $titre = htmlspecialchars($_POST['titre']);
+	                $contenu = nl2br(htmlspecialchars($_POST['contenu']));
 
-				addBillet($titre, $contenu);
-				echo "L'article a bien été publié...";               
-            }else{
-                echo "Veullez complétez tous les champs...";
-            }
-        }
+					addBillet($titre, $contenu);
+					echo "L'article a bien été publié...";               
+	            }else{
+	                echo "Veullez complétez tous les champs...";
+	            }
+        	}
 	    }
 
 	    elseif ($_GET['action'] == 'commentaires') {
@@ -98,21 +98,17 @@ try{
 
 	    elseif ($_GET['action'] == 'membreUpdate') {
 	        if(isset($_GET['id']) AND !empty($_GET['id'])){
-                $pseudoModifie = htmlspecialchars($_POST['pseudo']);
+	            if(isset($_POST['modifierMembre'])){
+	                $pseudoModifie = htmlspecialchars($_POST['pseudo']);
 
-             	infoMembre($pseudoModifie, $_GET['id']);
+	                membreUpdate($pseudoModifie, $_GET['id']);
 
-            /*if(isset($_POST['modifierMembre'])){
-                $pseudoModifie = htmlspecialchars($_POST['pseudo']);
-
-                membreUpdate($pseudoModifie, $_GET['id'])
-
-                //header('location: gererMembres.php');
-
-            }*/
-        }else{
-            echo "L'utilisateur est introuvable...";
-        }
+	            }else{
+	            	infoMembre($_GET['id']);
+		            }
+	        }else{
+	            echo "L'utilisateur est introuvable...";
+	        }
 	    }
 	    
 	}

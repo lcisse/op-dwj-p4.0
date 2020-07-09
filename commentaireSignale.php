@@ -30,10 +30,10 @@ if(!$_SESSION['motDePasse']){
         <section>	
         <?php include("sections-pages/menuAdmin.php"); ?>
 
-        <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectCommentaireSignale = $bdd->query('SELECT * FROM commentaires where commentaires_signales = "signaler"');
-        ?>
+        <!--<?php
+        /*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        $selectCommentaireSignale = $bdd->query('SELECT * FROM commentaires where commentaires_signales = "signaler" ORDER BY date_commentaire DESC');*/
+        ?>-->
 
         <div class="container" style="margin-top: 20px;">
         <h1>Les commentaires signalés.</h1>

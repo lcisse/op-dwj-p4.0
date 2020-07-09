@@ -56,7 +56,7 @@ if(!$_SESSION['motDePasse']){
         <section>
         <div class="container">
                 <div class="row" id="form-row">
-                    <form action="modifierMembre.php?id=<?= $_GET['id'];?>" method="POST" class="form-inline" style="margin: 50px;">
+                    <form action="index.php?action=membreUpdate&amp;id=<?= $_GET['id'];?>" method="POST" class="form-inline" style="margin: 50px;">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" class="form-control"

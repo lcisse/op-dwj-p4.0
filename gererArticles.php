@@ -32,7 +32,7 @@ if(!$_SESSION['motDePasse']){
 
         <?php
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectAllArticles = $bdd->query('SELECT * FROM billets');
+        $selectAllArticles = $bdd->query('SELECT * FROM billets ORDER BY date_billet DESC');
 
         while ($allArticles = $selectAllArticles->fetch())
             {

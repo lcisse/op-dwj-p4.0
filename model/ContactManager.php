@@ -14,7 +14,7 @@ class ContactManager extends Manager{
 
 	}
 
-	/*public function getMessage(){
+	public function getMessage(){
 
 		$bdd = $this->dbConnect();
 
@@ -22,7 +22,7 @@ class ContactManager extends Manager{
 
 		return $selectAllMessages;
 		
-	}*/
+	}
 }
 
 ?>

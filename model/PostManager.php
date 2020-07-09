@@ -38,4 +38,13 @@ class PostManager extends Manager
 
 	    return $derniereArticle;
 	}
+
+	public function postBillets($titre, $contenu)
+	{ 
+	    $bdd = $this->dbConnect();
+
+	    $addArticle = $bdd->prepare('INSERT INTO billets(titre, contenu, date_billet) VALUES(?,?, NOW())');
+        $addArticle->execute(array($titre, $contenu));
+        return  $addArticle;
+	}
 }

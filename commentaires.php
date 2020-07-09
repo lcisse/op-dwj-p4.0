@@ -30,10 +30,10 @@ if(!$_SESSION['motDePasse']){
         <section>	
         <?php include("sections-pages/menuAdmin.php"); ?>
 
-        <?php
+        <!--<?php/*
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectCommentaires = $bdd->query('SELECT * FROM commentaires');
-        ?>
+        $selectCommentaires = $bdd->query('SELECT * FROM commentaires ORDER BY date_commentaire DESC');*/
+        ?>-->
 
         <div class="container" style="margin-top: 20px;">
         <h1>Tous les commentaires commentaires.</h1>

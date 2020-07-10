@@ -4,7 +4,7 @@ if(!$_SESSION['motDePasse']){
 	header('location: connexion.php');
 }
 
-$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+/*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
 
 if(isset($_GET['id']) AND !empty($_GET['id'])){
 	$selectInfoArticle = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
@@ -14,7 +14,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
 	$infoArticles = $selectInfoArticle->fetch();
 }else{
 	echo "Article introuvable...";
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html>

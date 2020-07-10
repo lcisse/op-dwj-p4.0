@@ -39,7 +39,7 @@ if(!$_SESSION['motDePasse']){
                 {
         ?>
                     <div class="container" style="margin-top: 20px;">
-                		<p><strong><?php echo $allMembres['pseudo'];?></strong> <a href="index.php?action=membreUpdate&amp;id=<?php echo $allMembres['id']; ?>">Modifier</a> <a href="deleteMembre.php?id=<?php echo $allMembres['id']; ?>" style="color: red;">Supprimer</a></p> <hr>
+                		<p><strong><?php echo $allMembres['pseudo'];?></strong> <a href="index.php?action=membreUpdate&amp;id=<?php echo $allMembres['id']; ?>">Modifier</a> <a href="index.php?action=deleteMembre&amp;id=<?php echo $allMembres['id']; ?>" style="color: red;">Supprimer</a></p> <hr>
                 	</div>
         <?php	
                 }

@@ -47,4 +47,73 @@ class PostManager extends Manager
         $addArticle->execute(array($titre, $contenu));
         return  $addArticle;
 	}
+
+	public function getArticleAdim()
+	{
+		$bdd = $this->dbConnect();
+
+		$selectAllArticles = $bdd->query('SELECT * FROM billets ORDER BY date_billet DESC');
+
+		return $selectAllArticles; 
+	}
+
+	public function getOneArticleAdmin($idArticle)
+	{
+		$bdd = $this->dbConnect();
+
+		$selectInfoArticle = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
+
+		$selectInfoArticle->execute(array($idArticle));
+
+		$infoArticles = $selectInfoArticle->fetch();
+
+		return $infoArticles;
+	}
+
+	public function getInfoArticle($idArticle)
+	{
+		$bdd = $this->dbConnect();
+
+		$selectInfoArticle = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
+
+        $selectInfoArticle->execute(array($idArticle));
+
+        $infoArticles = $selectInfoArticle->fetch();
+
+        return $infoArticles;
+	}
+
+	public function modifierTitreArticle($titreModifie, $idArticle)
+	{
+		$bdd = $this->dbConnect();
+
+		$updateTitreArticle = $bdd->prepare('UPDATE billets SET  titre = ? WHERE id = ?');
+
+        $updateTitreArticle->execute(array($titreModifie, $idArticle));
+
+        return $updateTitreArticle;
+        
+	}
+
+	public function modifierContenuArticle($contenuModifie, $idArticle)
+	{
+		$bdd = $this->dbConnect();
+
+		$updateContenuArticle = $bdd->prepare('UPDATE billets SET  contenu = ? WHERE id = ?');
+
+        $updateContenuArticle->execute(array($contenuModifie, $idArticle));
+
+        return $updateContenuArticle;
+	}
+
+	public function deleteArticle($idArticle)
+	{
+		$bdd = $this->dbConnect();
+
+		$deleteArticle = $bdd->prepare('DELETE FROM billets WHERE id = ?');
+
+    	$deleteArticle->execute(array($idArticle));
+
+    	return $deleteArticle;
+	}
 }

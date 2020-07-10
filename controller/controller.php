@@ -164,12 +164,6 @@ function infoMembre($idMembre)
 
     $infoMembres = $user->getInfoMembre($idMembre);
 
-    /*if(isset($_POST['modifierMembre'])){
-        $updatePseudoMembre = $user->modifieMembre($pseudoModifie, $idMembre);
-                header('location: gererMembres.php');
-
-    }*/
-
     require('modifierMembre.php');
 }
 
@@ -180,4 +174,73 @@ function membreUpdate($pseudoModifie, $idMembre)
     $updatePseudoMembre = $user->modifieMembre($pseudoModifie, $idMembre);
 
     header('location: index.php?action=membres');
+}
+
+function commentaireSupprime($idCommentaire, $commentaire)
+{
+    $commentManager = new CommentManager();
+
+    $deleteCommentaire = $commentManager->deletecommentaire($idCommentaire); 
+
+    if (isset($commentaire)){
+        header('location: index.php?action=commentaires');
+    }else{
+        header('location: index.php?action=commentaireSignale');
+    }
+}
+
+function deleteUser($idMembre)
+{
+    $user = new User();
+
+    $deleteMembre = $user->deleteMembe($idMembre);
+
+    header('location: index.php?action=membres');
+}
+
+function listArticleAdmin()
+{
+    $postManager = new PostManager();
+
+    $selectAllArticles = $postManager->getArticleAdim();
+
+    require('gererArticles.php');
+}
+
+function oneArticle($idArticle)
+{
+    $postManager = new PostManager();
+
+    $infoArticles = $postManager->getOneArticleAdmin($idArticle);
+
+    require('contenuArticle.php');
+}
+
+function infoArticle($idArticle)
+{
+    $postManager = new PostManager();
+
+    $infoArticles = $postManager->getInfoArticle($idArticle);
+
+    require('modifierArticle.php');
+}
+
+function UpdateArticle($titreModifie, $contenuModifie, $idArticle)
+{
+    $postManager = new PostManager();
+
+    $updateTitreArticle = $postManager->modifierTitreArticle($titreModifie, $idArticle);
+
+    $updateContenuArticle = $postManager->modifierContenuArticle($contenuModifie, $idArticle);
+
+    header('location: index.php?action=gererArticle');
+}
+
+function deleteBillet($idArticle)
+{
+    $postManager = new PostManager();
+
+    $deleteArticle = $postManager->deleteArticle($idArticle);
+
+    header('location: index.php?action=gererArticle');
 }

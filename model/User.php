@@ -36,4 +36,15 @@ class User extends Manager
         return $updatePseudoMembre;
 
 	}
+
+	public function deleteMembe($idMembre)
+	{
+		$bdd = $this->dbConnect();
+
+		$deleteMembre = $bdd->prepare('DELETE FROM utilisateurs WHERE id = ?');
+
+    	$deleteMembre->execute(array($idMembre));
+
+    	return $deleteMembre;
+	}
 }

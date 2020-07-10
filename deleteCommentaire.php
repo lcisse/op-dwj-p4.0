@@ -1,4 +1,4 @@
-<?php
+<?php/*
 session_start();
 if(!$_SESSION['motDePasse']){
 	header('location: connexion.php');
@@ -20,5 +20,5 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
 
 }else{
 	echo "commentaire introuvable...";
-}
+}*/
 ?>

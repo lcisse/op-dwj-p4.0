@@ -29,7 +29,7 @@ if(!$_SESSION['motDePasse']){
         <section>
             <?php include("sections-pages/menuAdmin.php"); ?>
         </section>
-        <?php
+        <!--<?php/*
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
         if(isset($_GET['id']) AND !empty($_GET['id'])){
             $selectInfoArticle = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
@@ -56,13 +56,13 @@ if(!$_SESSION['motDePasse']){
             }
         }else{
             echo "Article introuvable...";
-        }
+        }*/
    
-        ?>
+        ?>-->
         <section>
         <div class="container">
                 <div class="row" id="form-row">
-                    <form action="modifierArticle.php?id=<?= $_GET['id'];?>" method="POST" style="margin: 50px">
+                    <form action="index.php?action=modifierArticle&amp;id=<?= $_GET['id'];?>" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label for="titre">Titre de l'article</label>
                             <input type="text" name="titre" id="titre" class="form-control" value="<?= $infoArticles['titre'] ;?>">

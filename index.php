@@ -105,15 +105,77 @@ try{
 
 	            }else{
 	            	infoMembre($_GET['id']);
-		            }
+		        }
 	        }else{
 	            echo "L'utilisateur est introuvable...";
 	        }
 	    }
+
+	    elseif ($_GET['action'] == 'deleteCommentaire') {	        
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+   			
+   				commentaireSupprime($_GET['id'], $_GET['commentaire']);			
+
+			}else{
+				echo "commentaire introuvable...";
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'deleteMembre') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+   
+	        	deleteUser($_GET['id']);
+
+			}else{
+				echo "l'utilisateur est introuvable...";
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'gererArticle') {
+	        listArticleAdmin();
+	    }
+
+	    elseif ($_GET['action'] == 'articleAdmin') {	        
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+				oneArticle($_GET['id']);
+			}else{
+				echo "Article introuvable...";
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'modifierArticle') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+
+	        	if(isset($_POST['pubModification'])){
+
+	        		$titreModifie = htmlspecialchars($_POST['titre']);
+
+                	$contenuModifie = nl2br(htmlspecialchars($_POST['contenu']));
+
+                	UpdateArticle($titreModifie, $contenuModifie, $_GET['id']);
+
+	        	}else{
+	        		infoArticle($_GET['id']);
+	        	}
+	        }else{
+            echo "Article introuvable...";
+        	}
+	    }
+
+	    elseif ($_GET['action'] == 'deleteArticle') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+    			
+    			deleteBillet($_GET['id']);
+
+			}else{
+				echo "Article introuvable...";
+			}
+	    }
 	    
 	}
 	else {
-	    listBillets();
+	    //listBillets();
+	    lastBilletAccueil();
 	}
 }
 catch(Exception $e) { // En cas d'erreur

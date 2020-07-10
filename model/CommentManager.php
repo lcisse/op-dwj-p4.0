@@ -50,7 +50,19 @@ class CommentManager extends Manager
 
 	    return $selectCommentaires;
         
-    }    
+    } 
+
+    public function deletecommentaire($idCommentaire)
+    {
+    	$bdd = $this->dbConnect();
+
+    	$deleteCommentaire = $bdd->prepare('DELETE FROM commentaires WHERE id = ?');
+
+   		 $deleteCommentaire->execute(array($idCommentaire));
+
+   		 return $deleteCommentaire; 
+    }   
+
 
 
 

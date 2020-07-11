@@ -30,10 +30,10 @@ if(!$_SESSION['motDePasse']){
         <section>	
         <?php include("sections-pages/menuAdmin.php"); ?>
 
-        <?php
+        <!--<?php/*
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectCommentaires = $bdd->query('SELECT * FROM commentaires');
-        ?>
+        $selectCommentaires = $bdd->query('SELECT * FROM commentaires ORDER BY date_commentaire DESC');*/
+        ?>-->
 
         <div class="container" style="margin-top: 20px;">
         <h1>Tous les commentaires commentaires.</h1>
@@ -45,7 +45,7 @@ if(!$_SESSION['motDePasse']){
             ?>
                 <div class="container" style="margin-top: 20px;">
             		<p><strong><?php echo $allCommentaires['auteur'];?></strong> le <?php echo $allCommentaires['date_commentaire'];?></p> 
-                    <p><?php echo $allCommentaires['commentaire'];?> <a href="deleteCommentaire.php?id=<?php echo $allCommentaires['id'];?>&amp;commentaire=commentaire" type="button" class="btn btn-outline-warning mb-2"> <strong>Supprimer.</strong></a></p><hr>
+                    <p><?php echo $allCommentaires['commentaire'];?> <a href="index.php?action=deleteCommentaire&amp;id=<?php echo $allCommentaires['id'];?>&amp;commentaire=commentaire" type="button" class="btn btn-outline-warning mb-2"> <strong>Supprimer.</strong></a></p><hr>
             	</div>
             <?php	
             }

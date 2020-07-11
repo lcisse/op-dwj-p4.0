@@ -34,7 +34,7 @@ if (!$_SESSION['admin']) {
         <section>
         	<div class="container">
                 <div class="row" id="form-row">
-                    <form action="connexion.php?action=connexion" method="POST" class="form-inline" style="margin: 50px;">
+                    <form action="index.php?action=connexion" method="POST" class="form-inline" style="margin: 50px;">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" class="form-control"
@@ -51,8 +51,9 @@ if (!$_SESSION['admin']) {
             </div>
         	
         </section>
+       
 
-        <?php
+        <!--<?php/*
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
 
         $connect = $bdd->prepare('SELECT * FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?');
@@ -90,9 +91,40 @@ if (!$_SESSION['admin']) {
             }else{
                 echo "Veillez compléter tous les champs... !";
             }
-        }
+        }*/
 
-        ?>
+        ?>-->
+
+        <!--<?php/*
+
+
+
+        //return $connect;
+
+                    $dataConnect = $connect->fetch();
+                    $motDePasse = 'mdp';
+                    $motDePasseUt = 'mdpUt';
+                    //$_SESSION['admin'] = '';
+                        if($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'administrateur'){
+                            $_SESSION['motDePasse'] = $motDePasse;
+                            $_SESSION['motDePasseUt'] = $motDePasseUt;
+                            $_SESSION['admin'] = 'Admin';
+                            $_SESSION['inscription'] = " ";
+                            $_SESSION['deconnecter'] = "Se deconnecter";
+                            $_SESSION['deconnection'] = "deconnexion";
+                            //header('location: admin.php');
+                        }elseif ($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'visiteur') {
+                           $_SESSION['motDePasseUt'] = $motDePasseUt;
+                           $_SESSION['inscription'] = " ";
+                           $_SESSION['deconnecter'] = "Se deconnecter";
+                           $_SESSION['deconnection'] = "deconnexion";
+                            //header('location: index.php?action=accueil');
+                        }else{
+                            //echo "Pseudo ou mot de passe incorrect... !";
+                            throw new Exception('Pseudo ou mot de passe incorrect... !');
+                        }*/ 
+
+        ?>-->
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

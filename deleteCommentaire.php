@@ -1,4 +1,4 @@
-<?php
+<?php/*
 session_start();
 if(!$_SESSION['motDePasse']){
 	header('location: connexion.php');
@@ -18,20 +18,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
     	header('location: commentaireSignale.php');
     }
 
-    /*if (isset($_GET['commentaire'])) {
-	    if ($_GET['commentaire'] == 'commentaire') {
-	    	$deleteCommentaire->execute(array($_GET['id']));
-	        header('location: commentaires.php');
-	    }elseif ($_GET['commentaire'] == 'comSign') {
-	    	$deleteCommentaire->execute(array($_GET['id']));
-	    	header('location: commentaireSignale.php');
-	    }else{
-	    	echo "Aucun commentaire trouvé...";
-	    }*/
-
-    //header('location: commentaireSignale.php');
-
 }else{
 	echo "commentaire introuvable...";
-}
+}*/
 ?>

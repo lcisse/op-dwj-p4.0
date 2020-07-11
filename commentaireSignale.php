@@ -30,10 +30,10 @@ if(!$_SESSION['motDePasse']){
         <section>	
         <?php include("sections-pages/menuAdmin.php"); ?>
 
-        <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectCommentaireSignale = $bdd->query('SELECT * FROM commentaires where commentaires_signales = "signaler"');
-        ?>
+        <!--<?php
+        /*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        $selectCommentaireSignale = $bdd->query('SELECT * FROM commentaires where commentaires_signales = "signaler" ORDER BY date_commentaire DESC');*/
+        ?>-->
 
         <div class="container" style="margin-top: 20px;">
         <h1>Les commentaires signalés.</h1>
@@ -45,7 +45,7 @@ if(!$_SESSION['motDePasse']){
             ?>
                 <div class="container" style="margin-top: 20px;">
             		<p><strong><?php echo $allCommentaireSignale['auteur'];?></strong> le <?php echo $allCommentaireSignale['date_commentaire'];?></p> 
-                    <p><?php echo $allCommentaireSignale['commentaire'];?> <a href="deleteCommentaire.php?id=<?php echo $allCommentaireSignale['id'];?>" type="button" class="btn btn-outline-warning mb-2"> <strong>Supprimer.</strong></a></p><hr>
+                    <p><?php echo $allCommentaireSignale['commentaire'];?> <a href="index.php?action=deleteCommentaire&amp;id=<?php echo $allCommentaireSignale['id'];?>" type="button" class="btn btn-outline-warning mb-2"> <strong>Supprimer.</strong></a></p><hr>
             	</div>
             <?php	
             }

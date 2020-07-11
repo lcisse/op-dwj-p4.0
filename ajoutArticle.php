@@ -43,7 +43,7 @@ if(!$_SESSION['motDePasse']){
         <section>
         <div class="container">
                 <div class="row" id="form-row">
-                    <form action="ajoutArticle.php" method="POST" style="margin: 50px">
+                    <form action="index.php?action=postArticle" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label for="titre">Titre de l'article</label>
                             <input type="text" name="titre" id="titre" class="form-control">
@@ -59,8 +59,8 @@ if(!$_SESSION['motDePasse']){
         	
         </section>
 
-        <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        <!--<?php
+        /*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
         
 
         if(isset($_POST['publication'])){
@@ -74,8 +74,8 @@ if(!$_SESSION['motDePasse']){
             }else{
                 echo "Veullez complétez tous les champs...";
             }
-        }
-        ?>
+        }*/
+        ?>-->
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

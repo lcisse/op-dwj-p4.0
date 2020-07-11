@@ -46,56 +46,155 @@ try{
 			}			
 		}
 		elseif ($_GET['action'] == 'connexion') {
-
+				
 			if(isset($_POST['okConnexion'])) {
-        
+        		
 	            if(!empty($_POST['pseudo']) AND !empty($_POST['password'])){
-
-	            	checkUser();
 
 	                $pseudo = htmlspecialchars($_POST['pseudo']);
 	                $mdp = sha1($_POST['password']);
-
-	                $connect->execute(array($pseudo, $mdp));
-
-	                $dataConnect = $connect->fetch();
-	                $motDePasse = 'mdp';
-	                $motDePasseUt = 'mdpUt';
-	                //$_SESSION['admin'] = '';
-		                if($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'administrateur'){
-		                    $_SESSION['motDePasse'] = $motDePasse;
-		                    $_SESSION['motDePasseUt'] = $motDePasseUt;
-		                    $_SESSION['admin'] = 'Admin';
-		                    $_SESSION['inscription'] = " ";
-		                    $_SESSION['deconnecter'] = "Se deconnecter";
-		                    $_SESSION['deconnection'] = "deconnexion";
-		                    header('location: admin.php');
-		                }elseif ($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'visiteur') {
-		                   $_SESSION['motDePasseUt'] = $motDePasseUt;
-		                   $_SESSION['inscription'] = " ";
-		                   $_SESSION['deconnecter'] = "Se deconnecter";
-		                   $_SESSION['deconnection'] = "deconnexion";
-		                    header('location: accueil.php');
-		                }else{
-		                    //echo "Pseudo ou mot de passe incorrect... !";
-		                    throw new Exception('Pseudo ou mot de passe incorrect... !');
-		                }
+	                
+		            checkUser($pseudo, $mdp);
 	            }else{
-	                //echo "Veillez compléter tous les champs... !";
 	                throw new Exception('Veillez compléter tous les champs... !');
 	            }
+        }else{
+        	header('location: connexion.php');
         }
 			
 		}
 
-
-		/*elseif ($_GET['action'] == 'message') {
+		elseif ($_GET['action'] == 'message') {
 	        listMessages();
-	    }*/
+	    }
+
+	    elseif ($_GET['action'] == 'postArticle') {
+	        if(isset($_POST['publication'])){
+	            if(!empty($_POST['titre']) AND !empty($_POST['contenu'])){
+	                $titre = htmlspecialchars($_POST['titre']);
+	                $contenu = nl2br(htmlspecialchars($_POST['contenu']));
+
+					addBillet($titre, $contenu);
+					echo "L'article a bien été publié...";               
+	            }else{
+	                throw new Exception('Veullez complétez tous les champs...');
+	            }
+        	}
+	    }
+
+	    elseif ($_GET['action'] == 'commentaires') {
+	        listAdminComments();
+	    }
+
+	    elseif ($_GET['action'] == 'commentaireSignale') {
+	        listCommentaireSignale();
+	    }
+
+	    elseif ($_GET['action'] == 'membres') {
+	        listMembres();
+	    }
+
+	    elseif ($_GET['action'] == 'membreUpdate') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+	            if(isset($_POST['modifierMembre'])){
+	                $pseudoModifie = htmlspecialchars($_POST['pseudo']);
+
+	                membreUpdate($pseudoModifie, $_GET['id']);
+
+	            }else{
+	            	infoMembre($_GET['id']);
+		        }
+	        }else{
+	            throw new Exception("L'utilisateur est introuvable...");
+	        }
+	    }
+
+	    elseif ($_GET['action'] == 'deleteCommentaire') {	        
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+   			
+   				commentaireSupprime($_GET['id'], $_GET['commentaire']);			
+
+			}else{
+				throw new Exception("commentaire introuvable...");
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'deleteMembre') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+   
+	        	deleteUser($_GET['id']);
+
+			}else{
+				throw new Exception("l'utilisateur est introuvable...");
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'gererArticle') {
+	        listArticleAdmin();
+	    }
+
+	    elseif ($_GET['action'] == 'articleAdmin') {	        
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+				oneArticle($_GET['id']);
+			}else{
+				throw new Exception("Article introuvable...");
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'modifierArticle') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+
+	        	if(isset($_POST['pubModification'])){
+
+	        		$titreModifie = htmlspecialchars($_POST['titre']);
+
+                	$contenuModifie = nl2br(htmlspecialchars($_POST['contenu']));
+
+                	UpdateArticle($titreModifie, $contenuModifie, $_GET['id']);
+
+	        	}else{
+	        		infoArticle($_GET['id']);
+	        	}
+	        }else{
+            	throw new Exception("Article introuvable...");
+        	}
+	    }
+
+	    elseif ($_GET['action'] == 'deleteArticle') {
+	        if(isset($_GET['id']) AND !empty($_GET['id'])){
+    			
+    			deleteBillet($_GET['id']);
+
+			}else{
+				throw new Exception("Article introuvable...");
+			}
+	    }
+
+	    elseif ($_GET['action'] == 'inscription') {
+	        if (isset($_POST['validez'])) {
+                if(!empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['conf-password'])){
+                    if ($_POST['password'] == $_POST['conf-password']) {
+
+                        $pseudo = htmlspecialchars($_POST['pseudo']);
+                        $email = htmlspecialchars($_POST['email']);
+                        $mdp = sha1($_POST['password']);
+
+                        addMembre($pseudo, $email, $mdp);
+
+                        header('location: connexion.php');
+                    }else{
+                        throw new Exception("Les mots de passe ne correspondent pas... !");
+                    }
+                }else{                    
+                    throw new Exception("Veillez remplir tous les champs... !");
+                }
+             }
+	    }
 	    
 	}
 	else {
-	    listBillets();
+	   
+	    lastBilletAccueil();
 	}
 }
 catch(Exception $e) { // En cas d'erreur

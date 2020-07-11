@@ -33,7 +33,7 @@ if (!$_SESSION['admin']) {
         <section>
         	<div class="container">
                 <div class="row" id="form-row">
-                    <form action="inscription.php" method="POST" style="margin: 50px">
+                    <form action="index.php?action=inscription" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" class="form-control">
@@ -54,31 +54,6 @@ if (!$_SESSION['admin']) {
                     </form>
                 </div>
             </div>
-
-
-            <?php
-            $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-
-            if (isset($_POST['validez'])) {
-                if(!empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['conf-password'])){
-                    if ($_POST['password'] == $_POST['conf-password']) {
-
-                        $pseudo = htmlspecialchars($_POST['pseudo']);
-                        $email = htmlspecialchars($_POST['email']);
-                        $mdp = sha1($_POST['password']);
-
-                        $insererMembre = $bdd->prepare('INSERT INTO utilisateurs(pseudo, mail, mot_de_passe, roles, date_inscription) VALUES(?, ?, ?, ?, NOW())');
-                        $insererMembre->execute(array($pseudo, $email, $mdp, ('visiteur')));
-                        header('location: connexion.php');
-                    }else{
-                        echo ('Les mots de passe ne correspondent pas... !');
-                    }
-                }else{
-                    echo "Veillez remplir tous les champs... !";
-                }
-             } 
-
-            ?>
         	
         </section>
 

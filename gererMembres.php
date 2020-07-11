@@ -31,21 +31,21 @@ if(!$_SESSION['motDePasse']){
         <?php include("sections-pages/menuAdmin.php"); ?>
 
         <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectAllMembres = $bdd->query('SELECT * FROM utilisateurs');
+        /*$bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
+        $selectAllMembres = $bdd->query('SELECT * FROM utilisateurs');*/
 
-        if($selectAllMembres -> rowCount() > 0){ 
+       // if($selectAllMembres -> rowCount() > 0){ 
             while ($allMembres = $selectAllMembres->fetch())
                 {
         ?>
                     <div class="container" style="margin-top: 20px;">
-                		<p><strong><?php echo $allMembres['pseudo'];?></strong> <a href="modifierMembre.php?id=<?php echo $allMembres['id']; ?>">Modifier</a> <a href="deleteMembre.php?id=<?php echo $allMembres['id']; ?>" style="color: red;">Supprimer</a></p> <hr>
+                		<p><strong><?php echo $allMembres['pseudo'];?></strong> <a href="index.php?action=membreUpdate&amp;id=<?php echo $allMembres['id']; ?>">Modifier</a> <a href="index.php?action=deleteMembre&amp;id=<?php echo $allMembres['id']; ?>" style="color: red;">Supprimer</a></p> <hr>
                 	</div>
         <?php	
                 }
-        }else{
-            echo "Aucun membre trouvé...";
-        }
+        //}else{
+            //echo "Aucun membre trouvé...";
+        //}
         ?>
 
         	

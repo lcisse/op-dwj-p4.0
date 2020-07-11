@@ -31,14 +31,11 @@ if(!$_SESSION['motDePasse']){
         <?php include("sections-pages/menuAdmin.php"); ?>
 
         <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        $selectAllArticles = $bdd->query('SELECT * FROM billets');
-
         while ($allArticles = $selectAllArticles->fetch())
             {
             ?>
                 <div class="container" style="margin-top: 20px;">
-            		<p><a href="contenuArticle.php?id= <?php echo $allArticles['id']; ?>"><strong><?php echo $allArticles['titre'];?></strong></a> <a href="modifierArticle.php?id=<?php echo $allArticles['id']; ?>">Modifier</a>  <a href="deleteArticle.php?id=<?php echo $allArticles['id']; ?>" style="color: red;" >Supprimer</a></p> <hr>
+            		<p><a href="index.php?action=articleAdmin&amp;id= <?php echo $allArticles['id']; ?>"><strong><?php echo $allArticles['titre'];?></strong></a> <a href="index.php?action=modifierArticle&amp;id=<?php echo $allArticles['id']; ?>">Modifier</a>  <a href="index.php?action=deleteArticle&amp;id=<?php echo $allArticles['id']; ?>" style="color: red;" >Supprimer</a></p> <hr>
             	</div>
             <?php	
             }

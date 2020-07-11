@@ -48,7 +48,29 @@ if(!$_SESSION['motDePasseUt']){
             ?>
             <div class="container">
                 <p><strong><?php echo htmlspecialchars($comment['auteur']); ?></strong> le <?php echo $comment['date_commentaire']; ?></p>
-                <p><?php echo nl2br(htmlspecialchars($comment['commentaire'])); ?> <a class="btn btn-default" href="index.php?action=signale&amp;idCom=<?= $comment['id'] ?>&amp;billet= <?php echo $billet['id']; ?>" role="button" name="signaler"><strong style="color: orange;">Signalez.</strong></a></p>
+                 
+                <div class="container"> 
+                    <p><?php echo nl2br(htmlspecialchars($comment['commentaire'])); ?>
+                    <a class="btn btn-default" role="button" data-toggle="modal" data-target="#modal"><strong style="color: orange;">Signalez.</strong></a></p>
+
+                    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Signaler ce commentaire</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Voulez-vous vraiment signaler ce commentaire ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                    <a href="index.php?action=signale&amp;idCom=<?= $comment['id'] ?>&amp;billet= <?php echo $billet['id']; ?>" name="signaler" type="button" class="btn btn-primary">Confirmer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                 
             </div>
             <?php
             } // Fin de la boucle des commentaires
@@ -79,3 +101,5 @@ if(!$_SESSION['motDePasseUt']){
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
     </body>
 </html>
+
+ 

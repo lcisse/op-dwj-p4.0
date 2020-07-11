@@ -29,7 +29,7 @@ if(!$_SESSION['motDePasse']){
         <section>
             <?php include("sections-pages/menuAdmin.php"); ?>
         </section>
-        <?php
+        <!--<?php/*
         $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
         if(isset($_GET['id']) AND !empty($_GET['id'])){
             $selectInfoMembre = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = ?');
@@ -50,13 +50,13 @@ if(!$_SESSION['motDePasse']){
             }
         }else{
             echo "L'utilisateur est introuvable...";
-        }
+        }*/
    
-        ?>
+        ?>-->
         <section>
         <div class="container">
                 <div class="row" id="form-row">
-                    <form action="modifierMembre.php?id=<?= $_GET['id'];?>" method="POST" class="form-inline" style="margin: 50px;">
+                    <form action="index.php?action=membreUpdate&amp;id=<?= $_GET['id'];?>" method="POST" class="form-inline" style="margin: 50px;">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" class="form-control"

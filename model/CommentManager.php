@@ -33,4 +33,37 @@ class CommentManager extends Manager
         return $commentaireSignale;
 	}
 
+	public function getCommentaireSignale()
+	{
+		$bdd = $this->dbConnect();
+
+		$selectCommentaireSignale = $bdd->query('SELECT * FROM commentaires where commentaires_signales = "signaler" ORDER BY date_commentaire DESC');
+
+		return  $selectCommentaireSignale;
+	}
+
+	public function adminGetcomments()
+	{
+	    $bdd = $this->dbConnect();
+
+	    $selectCommentaires = $bdd->query('SELECT * FROM commentaires ORDER BY date_commentaire DESC');
+
+	    return $selectCommentaires;
+        
+    } 
+
+    public function deletecommentaire($idCommentaire)
+    {
+    	$bdd = $this->dbConnect();
+
+    	$deleteCommentaire = $bdd->prepare('DELETE FROM commentaires WHERE id = ?');
+
+   		 $deleteCommentaire->execute(array($idCommentaire));
+
+   		 return $deleteCommentaire; 
+    }   
+
+
+
+
 }

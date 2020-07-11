@@ -24,14 +24,5 @@ nav{
 }
 
 
-<VirtualHost *:80>
-  ServerName blog
-  ServerAlias blog
-  DocumentRoot "C:\wamp64\www\blog"
-  <Directory "C:\wamp64\www\blog">
-    Options +Indexes +Includes +FollowSymLinks +MultiViews
-    AllowOverride All
-    Require local
-  </Directory>
-</VirtualHost>
+
 

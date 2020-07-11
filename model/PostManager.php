@@ -17,7 +17,6 @@ class PostManager extends Manager
 	{
 	    $bdd = $this->dbConnect();
 
-	    // On récupère tout le contenu de la table billets
 	    $req = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
 
 	    $req->execute(array($billetId));

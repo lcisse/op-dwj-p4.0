@@ -53,11 +53,9 @@ try{
 
 	                $pseudo = htmlspecialchars($_POST['pseudo']);
 	                $mdp = sha1($_POST['password']);
-
 	                
-		                checkUser($pseudo, $mdp);
+		            checkUser($pseudo, $mdp);
 	            }else{
-	                //echo "Veillez compléter tous les champs... !";
 	                throw new Exception('Veillez compléter tous les champs... !');
 	            }
         }else{
@@ -79,7 +77,7 @@ try{
 					addBillet($titre, $contenu);
 					echo "L'article a bien été publié...";               
 	            }else{
-	                echo "Veullez complétez tous les champs...";
+	                throw new Exception('Veullez complétez tous les champs...');
 	            }
         	}
 	    }
@@ -107,7 +105,7 @@ try{
 	            	infoMembre($_GET['id']);
 		        }
 	        }else{
-	            echo "L'utilisateur est introuvable...";
+	            throw new Exception("L'utilisateur est introuvable...");
 	        }
 	    }
 
@@ -117,7 +115,7 @@ try{
    				commentaireSupprime($_GET['id'], $_GET['commentaire']);			
 
 			}else{
-				echo "commentaire introuvable...";
+				throw new Exception("commentaire introuvable...");
 			}
 	    }
 
@@ -127,7 +125,7 @@ try{
 	        	deleteUser($_GET['id']);
 
 			}else{
-				echo "l'utilisateur est introuvable...";
+				throw new Exception("l'utilisateur est introuvable...");
 			}
 	    }
 
@@ -139,7 +137,7 @@ try{
 	        if(isset($_GET['id']) AND !empty($_GET['id'])){
 				oneArticle($_GET['id']);
 			}else{
-				echo "Article introuvable...";
+				throw new Exception("Article introuvable...");
 			}
 	    }
 
@@ -158,7 +156,7 @@ try{
 	        		infoArticle($_GET['id']);
 	        	}
 	        }else{
-            echo "Article introuvable...";
+            	throw new Exception("Article introuvable...");
         	}
 	    }
 
@@ -168,13 +166,34 @@ try{
     			deleteBillet($_GET['id']);
 
 			}else{
-				echo "Article introuvable...";
+				throw new Exception("Article introuvable...");
 			}
+	    }
+
+	    elseif ($_GET['action'] == 'inscription') {
+	        if (isset($_POST['validez'])) {
+                if(!empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['conf-password'])){
+                    if ($_POST['password'] == $_POST['conf-password']) {
+
+                        $pseudo = htmlspecialchars($_POST['pseudo']);
+                        $email = htmlspecialchars($_POST['email']);
+                        $mdp = sha1($_POST['password']);
+
+                        addMembre($pseudo, $email, $mdp);
+
+                        header('location: connexion.php');
+                    }else{
+                        throw new Exception("Les mots de passe ne correspondent pas... !");
+                    }
+                }else{                    
+                    throw new Exception("Veillez remplir tous les champs... !");
+                }
+             }
 	    }
 	    
 	}
 	else {
-	    //listBillets();
+	   
 	    lastBilletAccueil();
 	}
 }

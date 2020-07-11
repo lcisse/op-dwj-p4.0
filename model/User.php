@@ -47,4 +47,15 @@ class User extends Manager
 
     	return $deleteMembre;
 	}
+
+	public function addUser($pseudo, $email, $mdp)
+	{
+		$bdd = $this->dbConnect();
+
+		$insererMembre = $bdd->prepare('INSERT INTO utilisateurs(pseudo, mail, mot_de_passe, roles, date_inscription) VALUES(?, ?, ?, ?, NOW())');
+
+        $insererMembre->execute(array($pseudo, $email, $mdp, ('visiteur')));
+
+        return $insererMembre;
+	}
 }

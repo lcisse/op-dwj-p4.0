@@ -8,7 +8,6 @@ require_once('model/User.php');
 
 function listBillets()
 {
-    //$req = getBillets();
     $postManager = new PostManager(); 
     $req = $postManager->getBillets();
 
@@ -17,7 +16,6 @@ function listBillets()
 
 function lastBilletAccueil()
 {
-    //$req = getBillets();
     $postManager = new PostManager(); 
     $derniereArticle = $postManager->lastBillet(); 
 
@@ -26,15 +24,11 @@ function lastBilletAccueil()
 
 function billet()
 {
-    //$billet = getBillet($_GET['billet']);
-    //$comments = getComments($_GET['billet']);
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
     $billet = $postManager->getBillet($_GET['billet']);
     $comments = $commentManager->getComments($_GET['billet']);
-
-    //$commentaireSignale = $commentManager->signaleCommentaire($_GET['idCom']);
 
     require('views/articleCommentaire.php');
 }
@@ -42,7 +36,6 @@ function billet()
 //ajout commentaire
 function addComment($billetId, $auteur, $commentaire)
 {
-    //$affectedLines = postComment($billetId, $auteur, $commentaire);
     $commentManager = new CommentManager();
 
     $affectedLines = $commentManager->postComment($billetId, $auteur, $commentaire);
@@ -59,7 +52,7 @@ function commentaireSignale()
 {
     $commentManager = new CommentManager();
     $commentaireSignale = $commentManager->signaleCommentaire($_GET['idCom']);
-    //require('views/articleCommentaire.php');
+
     header('Location: index.php?action=billet&billet='.$_GET['billet']);
 }
 
@@ -89,7 +82,7 @@ function listMessages()
 
 function checkUser($pseudo, $mdp)
 {
-    session_start();
+   session_start();
    $connexionManager = new ConnexionManager();
    
    $connect =  $connexionManager ->connectUser($pseudo, $mdp);
@@ -114,7 +107,6 @@ function checkUser($pseudo, $mdp)
         $_SESSION['deconnection'] = "deconnexion";
         header('location: index.php?action=accueil');
     }else{
-        //echo "Pseudo ou mot de passe incorrect... !";
         throw new Exception('Pseudo ou mot de passe incorrect... !');
     }
 
@@ -243,4 +235,13 @@ function deleteBillet($idArticle)
     $deleteArticle = $postManager->deleteArticle($idArticle);
 
     header('location: index.php?action=gererArticle');
+}
+
+function addMembre($pseudo, $email, $mdp)
+{
+    $user = new User();
+
+    $insererMembre = $user->addUser($pseudo, $email, $mdp);
+
+    require('inscription.php');
 }

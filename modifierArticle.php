@@ -29,36 +29,7 @@ if(!$_SESSION['motDePasse']){
         <section>
             <?php include("sections-pages/menuAdmin.php"); ?>
         </section>
-        <!--<?php/*
-        $bdd = new PDO('mysql:host=localhost;dbname=billet_simple_pour_l\'alaska;charset=utf8', 'root', '');
-        if(isset($_GET['id']) AND !empty($_GET['id'])){
-            $selectInfoArticle = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
-
-            $selectInfoArticle->execute(array($_GET['id']));
-
-            $infoArticles = $selectInfoArticle->fetch();
-
-            if(isset($_POST['pubModification'])){
-                $titreModifie = htmlspecialchars($_POST['titre']);
-
-                $contenuModifie = nl2br(htmlspecialchars($_POST['contenu']));
-
-                $updateTitreArticle = $bdd->prepare('UPDATE billets SET  titre = ? WHERE id = ?');
-
-                $updateTitreArticle->execute(array($titreModifie, $_GET['id']));
-
-                $updateContenuArticle = $bdd->prepare('UPDATE billets SET  contenu = ? WHERE id = ?');
-
-                $updateContenuArticle->execute(array($contenuModifie, $_GET['id']));
-
-                header('location: gererArticles.php');
-
-            }
-        }else{
-            echo "Article introuvable...";
-        }*/
-   
-        ?>-->
+    
         <section>
         <div class="container">
                 <div class="row" id="form-row">

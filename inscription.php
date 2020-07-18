@@ -4,7 +4,7 @@ if (!$_SESSION['admin']) {
     $_SESSION['admin'] = ' ';
     $_SESSION['inscription'] = "S'inscrire";
     $_SESSION['deconnecter'] = "Se connecter";
-    $_SESSION['deconnection'] = "connexion";
+    $_SESSION['deconnection'] = "index";
 }
 ?>
 <!DOCTYPE html>

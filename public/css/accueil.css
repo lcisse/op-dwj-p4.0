@@ -164,8 +164,12 @@ footer{
 		height: 600px;
     }
 
-    #textInfo p{
+	p{
 		font-size: 1.5em;
+	}
+
+    #textInfo p{
+		font-size: 1.5em !important;
 	}
 
     #barreInfo1{

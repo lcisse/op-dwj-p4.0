@@ -7,14 +7,14 @@ if (!$_SESSION['admin']) {
     $_SESSION['deconnection'] = "index";
 }
 if(!$_SESSION['motDePasseUt']){
-    header('location: index.php?action=pageConnexion');
+    header('location: index.php?action=connexion');
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Articles</title>
+        <title>Article et commentaire</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="public/css/article-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

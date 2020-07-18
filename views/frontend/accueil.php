@@ -12,7 +12,7 @@ if (!$_SESSION['admin']) {
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Articles</title>
+        <title>Accueil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="public/css/accueil.css" />
@@ -65,7 +65,11 @@ if (!$_SESSION['admin']) {
                         <h1><em>Le dernier épisode</em></h>
                         <h2><?php echo htmlspecialchars($derniereArticle['titre']); ?></h2>
                         <div id="date-article"><em><?php echo $derniereArticle['date_billet']; ?></em></div>
-                        <p><?php echo html_entity_decode($derniereArticle['contenu'], ENT_NOQUOTES); ?></p>
+                        <?php 
+                            $string = html_entity_decode($derniereArticle['contenu'], ENT_NOQUOTES);
+                        ?>
+                        <p id="paraLastArt"><?php echo  substr($string, 0, strrpos(substr($string, 0, 1500), ' '));?> <a href="index.php?action=listBillets"> <span id="voirArticle" >[...]</span></a></p>
+
                     </div>                    
                 </div>
             </div>

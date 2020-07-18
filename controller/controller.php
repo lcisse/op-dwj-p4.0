@@ -11,7 +11,7 @@ function listBillets()
     $postManager = new PostManager(); 
     $req = $postManager->getBillets();
 
-    require('views/articles.php');
+    require('views/frontend/articles.php');
 }
 
 function lastBilletAccueil()
@@ -19,7 +19,7 @@ function lastBilletAccueil()
     $postManager = new PostManager(); 
     $derniereArticle = $postManager->lastBillet(); 
 
-    require('accueil.php');
+    require('views/frontend/accueil.php');
 }
 
 function billet()
@@ -30,7 +30,7 @@ function billet()
     $billet = $postManager->getBillet($_GET['billet']);
     $comments = $commentManager->getComments($_GET['billet']);
 
-    require('views/articleCommentaire.php');
+    require('views/frontend/articleCommentaire.php');
 }
 
 //ajout commentaire
@@ -66,7 +66,7 @@ function addMessage($nom, $prenom, $email, $message)
         throw new Exception('Impossible d\'ajouter le message !');
     }
     else {
-        header('Location: contact.php?');
+        header('Location: index.php?action=pageContact');
     }
 
 }
@@ -77,7 +77,7 @@ function listMessages()
 
     $selectAllMessages = $contactManager ->getMessage();
 
-    require('message.php');
+    require('views/backend/message.php');
 }
 
 function checkUser($pseudo, $mdp)
@@ -99,7 +99,7 @@ function checkUser($pseudo, $mdp)
         $_SESSION['inscription'] = " ";
         $_SESSION['deconnecter'] = "Se deconnecter";
         $_SESSION['deconnection'] = "deconnexion";
-        header('location: admin.php');
+        header('location: index.php?action=admin');
     }elseif ($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'visiteur') {
         $_SESSION['motDePasseUt'] = $motDePasseUt;
         $_SESSION['inscription'] = " ";
@@ -119,7 +119,7 @@ function addBillet($titre, $contenu)
    
    $addArticle =  $postManager->postBillets($titre, $contenu);
 
-   require('ajoutArticle.php');
+   require('views/backend/ajoutArticle.php');
 }
 
 function listAdminComments()
@@ -128,7 +128,7 @@ function listAdminComments()
   
   $selectCommentaires =  $commentManager->adminGetcomments();
 
-   require('commentaires.php');
+  require('views/backend/commentaires.php');
 }
 
 function listCommentaireSignale()
@@ -137,7 +137,7 @@ function listCommentaireSignale()
    
    $selectCommentaireSignale = $commentManager->getCommentaireSignale();
 
-   require('commentaireSignale.php');
+   require('views/backend/commentaireSignale.php');
 
 }
 
@@ -147,7 +147,7 @@ function listMembres()
 
     $selectAllMembres = $user->getmembres();
 
-    require('gererMembres.php');
+    require('views/backend/gererMembres.php');
 }
 
 function infoMembre($idMembre)
@@ -156,7 +156,7 @@ function infoMembre($idMembre)
 
     $infoMembres = $user->getInfoMembre($idMembre);
 
-    require('modifierMembre.php');
+    require('views/backend/modifierMembre.php');
 }
 
 function membreUpdate($pseudoModifie, $idMembre)
@@ -196,7 +196,7 @@ function listArticleAdmin()
 
     $selectAllArticles = $postManager->getArticleAdim();
 
-    require('gererArticles.php');
+    require('views/backend/gererArticles.php');
 }
 
 function oneArticle($idArticle)
@@ -205,7 +205,7 @@ function oneArticle($idArticle)
 
     $infoArticles = $postManager->getOneArticleAdmin($idArticle);
 
-    require('contenuArticle.php');
+    require('views/backend/contenuArticle.php');
 }
 
 function infoArticle($idArticle)
@@ -214,7 +214,7 @@ function infoArticle($idArticle)
 
     $infoArticles = $postManager->getInfoArticle($idArticle);
 
-    require('modifierArticle.php');
+    require('views/backend/modifierArticle.php');
 }
 
 function UpdateArticle($titreModifie, $contenuModifie, $idArticle)
@@ -243,5 +243,5 @@ function addMembre($pseudo, $email, $mdp)
 
     $insererMembre = $user->addUser($pseudo, $email, $mdp);
 
-    require('inscription.php');
+    require('views/frontend/inscription.php');
 }

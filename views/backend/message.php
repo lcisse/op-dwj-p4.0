@@ -1,44 +1,53 @@
+<?php
+session_start();
+if(!$_SESSION['motDePasse']){
+	header('location: connexion.php');
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Articles</title>
+        <title>Admin- les messages.</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
  
     <body>
-        <header>
-            <?php include("sections-pages/barre-menu.php"); ?>
+    	<header>
+        	<?php include("sections-pages/barre-menu.php"); ?> 
 
-            <div class="container-pluid" >
+        	<div class="container-pluid" >
                 <div class="row">
                     <div class="col-xs-12" id="image-header">
                         <img src="public/images/image1.jpg" class="img-responsive" />
                     </div>
                 </div>
-            </div>
-            
+            </div>          
         </header>
-        <section>
-            <div class="container">
-                <div class="row" id="form-row">
-                    <form action="" method="POST" style="margin: 50px">
-                        <div class="form-group">
-                            <label>Nom</label>
-                            <input type="text" name="nom" id="nom" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Commentaire</label>
-                            <textarea id="Commentaire" rows="5" cols="100" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-default btn-lg">Envoyez</button>
-                    </form>
-                </div>
-            </div>
-            
+
+        <section>	
+        <?php include("sections-pages/menuAdmin.php"); ?>
+
+        <div class="container" style="margin-top: 20px;"><h2>Vos messages.</h2></div>
+        
+        <?php        
+        while ($allMessages = $selectAllMessages->fetch())
+            {
+            ?>
+                <div class="container" style="margin-top: 20px;">
+            		<p><strong><?php echo $allMessages['prenom'];?> <?php echo $allMessages['nom'];?></strong> <em> <?php echo $allMessages['date_messages'];?></em></p> 
+                    <p> <?php echo $allMessages['messages'];?></p>
+                    <p><?php echo $allMessages['mail'];?></p> <hr>
+            	</div>
+            <?php	
+            }
+            ?>
+        	
+        	
         </section>
+
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

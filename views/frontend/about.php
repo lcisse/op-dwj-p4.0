@@ -11,7 +11,7 @@ if (!$_SESSION['admin']) {
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>A propros</title>
+        <title>A propos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="public/css/about.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -30,19 +30,19 @@ if (!$_SESSION['admin']) {
             </div>
     	</header>
 
-    	<section>
-    		<div class="container">
-		    	<h1>Lamine Cisse</h1>
-		    	<p>Developpeur wed junior</p>
-		    	<h2>Compétences :</h2>
-		    	<uL>
-		    		<li>HTML, CSS</li>
-		    		<li>WORDPRESS</li>
-		    		<li>JAVASCRIPT, JQUERY</li>
-		    		<li>PHP, SQL</li>
-		    	</uL>
-	    	</div>
-    	</section>
+        <section>
+            <div class="container" id="derniereArticle">
+                <div class="row">
+                    <div class="col-md-4" id="derniereArticleImg">
+                        <img src="public/images/about2.jpg" class="img-responsive" alt="image tablette">
+                    </div>
+                    <div class="col-md" id="derniereArticleTexte">
+                        <h1><em>Jean Forteroche, acteur et écrivain.</em></h1>
+                        <p>Après des études de lettres et un début de carrière dans dans le monde du journalisme, je “décide” (ma vie est tout à fait une suite planifiée de choix réfléchis) de me consacrer à ma passion (l’écriture). Regarder la vie est mon premier roman. Mes thèmes de prédilection sont la l'aventure, les relations humaines, l’épanouissement personnel, et la quête de sens. J’ai grandi en région parisienne, et après avoir beaucoup voyagé, je vis actuellement à l'alaska.</p>
+                    </div>                    
+                </div>
+            </div>
+        </section>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

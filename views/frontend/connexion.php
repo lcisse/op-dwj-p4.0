@@ -4,16 +4,17 @@ if (!$_SESSION['admin']) {
     $_SESSION['admin'] = ' ';
     $_SESSION['inscription'] = "S'inscrire";
     $_SESSION['deconnecter'] = "Se connecter";
-    $_SESSION['deconnection'] = "connexion";
+    $_SESSION['deconnection'] = "index";
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Articles</title>
+        <title>Connexion</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="public/css/articles.css" />
+        <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
  
@@ -31,24 +32,24 @@ if (!$_SESSION['admin']) {
             
         </header>
         <section>
-            
-            <?php
-            // On affiche chaque entrée une à une
-            while ($donnees = $req->fetch())
-            {
-            ?>
-                <div class="container">
-                    <h1><?php echo htmlspecialchars($donnees['titre']); ?></h1>
-                    <div id="date-article"><em><?php echo $donnees['date_billet']; ?></</em></div>
-                    <p><?php echo html_entity_decode($donnees['contenu']); ?></p> 
-                    <div id="commentaire"><a href="index.php?billet= <?php echo $donnees['id']; ?>&amp;action=billet"><p><strong>Commentaire</strong></p></a></div>   
+        	<div class="container">
+                <div class="row" id="form-row">
+                    <form action="index.php?action=connexion" method="POST" class="form-inline" style="margin: 50px;">
+                        <div class="form-group">
+                            <label for="pseudo">Pseudo</label>
+                            <input type="text" name="pseudo" id="pseudo" class="form-control"
+                            style="margin: 30px;" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" name="password" id="password" class="form-control"
+                            style="margin: 30px;" required>
+                        </div>
+                        <button type="submit" class="btn btn-default btn-lg" name="okConnexion">Validez</button>
+                    </form>
                 </div>
-            <?php
-            }
-
-            $req->closeCursor(); // Termine le traitement de la requête
-
-            ?>
+            </div>
+        	
         </section>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -57,4 +58,3 @@ if (!$_SESSION['admin']) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
     </body>
 </html>
-

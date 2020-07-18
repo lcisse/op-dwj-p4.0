@@ -4,16 +4,16 @@ if (!$_SESSION['admin']) {
     $_SESSION['admin'] = ' ';
     $_SESSION['inscription'] = "S'inscrire";
     $_SESSION['deconnecter'] = "Se connecter";
-    $_SESSION['deconnection'] = "connexion";
+    $_SESSION['deconnection'] = "index";
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Articles</title>
+        <title>Inscription</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="public/css/articles.css" />
+        <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
  
@@ -31,29 +31,30 @@ if (!$_SESSION['admin']) {
             
         </header>
         <section>
-            
-            <?php
-            // On affiche chaque entrée une à une
-            while ($donnees = $req->fetch())
-            {
-            ?>
-                <div id="conteneurArticle">
-                    <h1 id="titreArticle"><?php echo htmlspecialchars($donnees['titre']);?> Le <em id="date-article"><?php echo $donnees['date_billet']; ?></em></h1>
-                    <!--<div id="date-article"><strong><em><?php //echo $donnees['date_billet']; ?></</em></strong></div>-->
-                    <!--<p><?php //echo html_entity_decode($donnees['contenu']); ?></p>-->
-                    <?php 
-                    $string = html_entity_decode($donnees['contenu']);
-                    ?>
-                    <p id="para"><?php echo  substr($string, 0, strrpos(substr($string, 0, 1500), ' '));?> </p>
-
-                    <div id="commentaire"><a href="index.php?billet= <?php echo $donnees['id']; ?>&amp;action=billet"><p><strong>Plus [...]</strong></p></a></div>   
+        	<div class="container">
+                <div class="row" id="form-row">
+                    <form action="index.php?action=inscription" method="POST" style="margin: 50px">
+                        <div class="form-group">
+                            <label for="pseudo">Pseudo</label>
+                            <input type="text" name="pseudo" id="pseudo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Mail</label>
+                            <input type="email" name="email" id="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="conf-password">Confirmez votre mot de passe</label>
+                            <input type="password" name="conf-password" id="conf-password" class="form-control">
+                        </div>                        
+                        <button type="submit" class="btn btn-default btn-lg" name="validez">Validez</button>
+                    </form>
                 </div>
-            <?php
-            }
-
-            $req->closeCursor(); // Termine le traitement de la requête
-
-            ?>
+            </div>
+        	
         </section>
 
        <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -62,4 +63,3 @@ if (!$_SESSION['admin']) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
     </body>
 </html>
-

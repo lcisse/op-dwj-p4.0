@@ -7,7 +7,7 @@ class User extends Manager
 	{
 		$bdd = $this->dbConnect();
 
-		$selectAllMembres = $bdd->query('SELECT * FROM utilisateurs');
+		$selectAllMembres = $bdd->query('SELECT * FROM utilisateurs ORDER BY date_inscription DESC');
 
 		return $selectAllMembres;
 	}

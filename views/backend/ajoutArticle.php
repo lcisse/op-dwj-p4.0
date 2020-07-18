@@ -1,59 +1,61 @@
 <?php
 session_start();
-if (!$_SESSION['admin']) {
-    $_SESSION['admin'] = ' ';
-    $_SESSION['inscription'] = "S'inscrire";
-    $_SESSION['deconnecter'] = "Se connecter";
-    $_SESSION['deconnection'] = "index";
+if(!$_SESSION['motDePasse']){
+	header('location: connexion.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Contact</title>
+        <title>Admin- publier un article</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="public/css/formulaire-commentaire.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+            tinymce.init({
+                selector: '#contenu',
+                plugins: 'code',
+                plugins: "link"
+
+            });
+        </script>
     </head>
  
     <body>
-        <header>
+    	<header>
         	<?php include("sections-pages/barre-menu.php"); ?>
 
             <div class="container-pluid" >
-            	<div class="row">
-            		<div class="col-xs-12" id="image-header">
-            			<img src="public/images/image1.jpg" class="img-responsive" />
-            		</div>
-            	</div>
-            </div>
-            
+                <div class="row">
+                    <div class="col-xs-12" id="image-header">
+                        <img src="public/images/image1.jpg" class="img-responsive" />
+                    </div>
+                </div>
+            </div>           
         </header>
         <section>
-        	<div class="container">
+            <?php include("sections-pages/menuAdmin.php"); ?>
+        </section>
+
+        <section>
+        <div class="container">
                 <div class="row" id="form-row">
-                    <form action="index.php?action=contact" method="POST" style="margin: 50px">
+                    <form action="index.php?action=postArticle" method="POST" style="margin: 50px">
                         <div class="form-group">
-                            <label>Nom</label>
-                            <input type="text" name="nom" id="nom" class="form-control" required>
+                            <label for="titre">Titre de l'article</label>
+                            <input type="text" name="titre" id="titre" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" id="prenom" class="form-control" required>
+                            <label for="contenu">Contenu de l'article</label>
+                            <textarea id="contenu" name="contenu" rows="5" cols="100" class="form-control"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Mail</label>
-                            <input type="email" name="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea id="Message" name="message" rows="5" cols="100" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-default btn-lg" name="okmessage">Envoyer</button>
+                        <button type="submit" name="publication" class="btn btn-default btn-lg">Publiez</button>
                     </form>
                 </div>
-            </div>
+            </div>	
         	
         </section>
 

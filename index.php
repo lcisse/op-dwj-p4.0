@@ -40,9 +40,11 @@ try{
                 $email = htmlspecialchars($_POST['email']);
                 $message = htmlspecialchars($_POST['message']);
 
-			if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['message'])){
+            if(isset($_POST['okmessage'])){ 
+				if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['message'])){
 
-                addMessage($nom, $prenom, $email, $message);
+	                addMessage($nom, $prenom, $email, $message);
+				}
 			}			
 		}
 		elseif ($_GET['action'] == 'connexion') {
@@ -58,10 +60,9 @@ try{
 	            }else{
 	                throw new Exception('Veillez compléter tous les champs... !');
 	            }
-        }else{
-        	header('location: connexion.php');
-        }
-			
+	        }else{
+	        	require('views/frontend/connexion.php');
+	        }			
 		}
 
 		elseif ($_GET['action'] == 'message') {
@@ -79,6 +80,8 @@ try{
 	            }else{
 	                throw new Exception('Veullez complétez tous les champs...');
 	            }
+        	}else{
+        		require('views/backend/ajoutArticle.php');
         	}
 	    }
 
@@ -179,16 +182,43 @@ try{
                         $email = htmlspecialchars($_POST['email']);
                         $mdp = sha1($_POST['password']);
 
-                        addMembre($pseudo, $email, $mdp);
+                        //addMembre($pseudo, $email, $mdp);
 
-                        header('location: connexion.php');
+                        if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$#', $mdp)){
+                        	addMembre($pseudo, $email, $mdp);
+
+                        	echo "succés";
+                        }else{
+                        	require('views/frontend/inscription.php');
+                        	echo "le mot de passe ne correspond pas...";
+                        }
+
+                        //header('location: index.php?action=connexion');
                     }else{
                         throw new Exception("Les mots de passe ne correspondent pas... !");
                     }
                 }else{                    
                     throw new Exception("Veillez remplir tous les champs... !");
                 }
+             }else{
+             	require('views/frontend/inscription.php');
              }
+	    }
+
+	    elseif ($_GET['action'] == 'about') {
+	        require('views/frontend/about.php');
+	    }
+
+	    elseif ($_GET['action'] == 'pageContact') {
+	        require('views/frontend/contact.php');
+	    }
+
+	    elseif ($_GET['action'] == 'gererCommentaires') {
+	        require('views/backend/gererCommentaires.php');
+	    }
+
+	    elseif ($_GET['action'] == 'admin') {
+	        require('views/backend/admin.php');
 	    }
 	    
 	}

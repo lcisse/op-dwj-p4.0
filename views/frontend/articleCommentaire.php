@@ -6,7 +6,7 @@ if (!$_SESSION['admin']) {
     $_SESSION['deconnecter'] = "Se connecter";
     $_SESSION['deconnection'] = "index";
 }
-if(!$_SESSION['motDePasseUt']){
+if(!$_SESSION['motDePasseUt'] | !$_SESSION['motDePasse']){
     header('location: index.php?action=connexion');
 }
 ?>

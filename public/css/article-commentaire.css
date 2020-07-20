@@ -12,21 +12,21 @@ nav{
 @media all and (max-width: 640px)
 {
 	p{
-		font-size: 1.6em;
+		font-size: 1em;
 	}
 }
 
 @media all and (min-width: 641px) and (max-width: 768px)
 {
 	p{
-		font-size: 1.5em;
+		font-size: 1em;
 	}
 }
 
 @media all and (min-width: 769px) and (max-width: 1200px)
 {
 	p{
-		font-size: 1.5em;
+		font-size: 1em;
 	}
 }
 

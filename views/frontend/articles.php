@@ -39,8 +39,6 @@ if (!$_SESSION['admin']) {
             ?>
                 <div id="conteneurArticle">
                     <h1 id="titreArticle"><?php echo htmlspecialchars($donnees['titre']);?> Le <em id="date-article"><?php echo $donnees['date_billet']; ?></em></h1>
-                    <!--<div id="date-article"><strong><em><?php //echo $donnees['date_billet']; ?></</em></strong></div>-->
-                    <!--<p><?php //echo html_entity_decode($donnees['contenu']); ?></p>-->
                     <?php 
                     $string = html_entity_decode($donnees['contenu']);
                     ?>

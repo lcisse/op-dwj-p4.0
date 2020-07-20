@@ -90,7 +90,7 @@ function checkUser($pseudo, $mdp)
    $dataConnect = $connect->fetch();
 
    $motDePasse = 'mdp';
-   $motDePasseUt = 'mdpUt';
+   $motDePasseUt = 'mdpUt'; 
                    
     if($connect -> rowCount() > 0 AND $dataConnect['roles'] == 'administrateur'){
         $_SESSION['motDePasse'] = $motDePasse;
@@ -241,7 +241,15 @@ function addMembre($pseudo, $email, $mdp)
 {
     $user = new User();
 
-    $insererMembre = $user->addUser($pseudo, $email, $mdp);
+    $dataMailPseudo = $user->getMail($email);
 
-    require('views/frontend/inscription.php');
+    if ($dataMailPseudo > 0) {
+        require('views/frontend/inscription.php');
+        echo "cette adresse mail existe déjà...";
+    }else{
+        $insererMembre = $user->addUser($pseudo, $email, $mdp);
+        require('views/frontend/inscription.php');
+        echo "Votre compte a bien été créé...";
+    }
+    
 }

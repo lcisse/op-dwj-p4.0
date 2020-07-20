@@ -68,7 +68,7 @@ if (!$_SESSION['admin']) {
                         <?php 
                             $string = html_entity_decode($derniereArticle['contenu'], ENT_NOQUOTES);
                         ?>
-                        <p id="paraLastArt"><?php echo  substr($string, 0, strrpos(substr($string, 0, 1500), ' '));?> <a href="index.php?action=listBillets"> <span id="voirArticle" >[...]</span></a></p>
+                        <p id="paraLastArt"><?php echo  substr($string, 0, strrpos(substr($string, 0, 1500), ' '));?> <a href="index.php?action=listBillets" id="voirArticle"><strong>[...]</a></strong></p>
 
                     </div>                    
                 </div>

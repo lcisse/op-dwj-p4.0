@@ -36,19 +36,19 @@ if (!$_SESSION['admin']) {
                     <form action="index.php?action=inscription" method="POST" style="margin: 50px">
                         <div class="form-group">
                             <label for="pseudo">Pseudo</label>
-                            <input type="text" name="pseudo" id="pseudo" class="form-control">
+                            <input type="text" name="pseudo" id="pseudo" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Mail</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Mot de passe</label>
-                            <input type="password" name="password" id="password" class="form-control">
+                            <input type="password" name="password" id="password" class="form-control" pattern=".{8,}"   required title="8 caracteres minimum">
                         </div>
                         <div class="form-group">
                             <label for="conf-password">Confirmez votre mot de passe</label>
-                            <input type="password" name="conf-password" id="conf-password" class="form-control">
+                            <input type="password" name="conf-password" id="conf-password" class="form-control" required>
                         </div>                        
                         <button type="submit" class="btn btn-default btn-lg" name="validez">Validez</button>
                     </form>

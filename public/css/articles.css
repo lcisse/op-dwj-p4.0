@@ -5,7 +5,6 @@
 
 body{
   padding: 0% 15% 0% 15%;
-  border: 2px solid red;
 }
 nav{
   display: flex;
@@ -63,7 +62,7 @@ l#date-article{
 @media all and (max-width: 640px)
 {
 	p{
-	font-size: 2em;
+	font-size: 1.6em !important;
   }
 
   #titreArticle{

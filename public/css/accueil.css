@@ -1,6 +1,4 @@
-body{
-	kbackground-color: rgb(245,245,245);
-}
+
 #page{
 	background-color: rgb(245,245,245);
 }
@@ -69,7 +67,6 @@ nav{
 	position: relative;
 	width: 350px;
 	height: 450px;
-	gborder: 2px solid red;
 	margin-top: 50px;
 	background-color: white;
 
@@ -103,7 +100,6 @@ nav{
 	background-color: rgb(45,45,45);
 }
 .fa {
-	cbackground-color: white;
 	font-size: 50px;
 	color: white;
 }
@@ -205,7 +201,6 @@ footer{
 	#diapo{
   	   width: 100%;         
        margin: 30px 0px 40px 20px;
-       smargin-bottom: 40px;
 	}
 	#conteneur{
        width: 710px;
@@ -226,6 +221,10 @@ footer{
     }
 
     #textInfo p{
+		font-size: 1.6em;
+	}
+
+	p{
 		font-size: 1.5em;
 	}
 
@@ -243,11 +242,11 @@ footer{
 
 	#derniereArticle{
 		margin-top: 40px;
-		height: 400px;
+		height: 550px;
 	}
 
 	#derniereArticleTexte{
-		height: 400px;
+		height: 550px;
 	}
 
 	#date-article{
@@ -288,6 +287,10 @@ footer{
 		font-size: 1.5em;
 	}
 
+	p{
+		font-size: 1.5em;
+	}
+
     #barreInfo1{
 		width: 100%;
 		
@@ -302,11 +305,11 @@ footer{
 
 	#derniereArticle{
 		margin-top: 40px;
-		height: 400px;
+		height: 550px;
 	}
 
 	#derniereArticleTexte{
-		height: 400px;
+		height: 550px;
 	}
 
 	#date-article{

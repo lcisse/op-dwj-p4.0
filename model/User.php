@@ -58,4 +58,18 @@ class User extends Manager
 
         return $insererMembre;
 	}
+
+	public function getMail($email)
+	{
+
+		$bdd = $this->dbConnect();
+
+		$selectMailPseudo = $bdd->prepare('SELECT COUNT(pseudo) AS nbUser FROM utilisateurs WHERE mail = ?');
+
+		$selectMailPseudo->execute(array($email));
+
+		$dataMailPseudo = $selectMailPseudo->fetch();
+
+    	return $dataMailPseudo['nbUser'];
+	}
 }

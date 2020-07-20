@@ -73,7 +73,7 @@ try{
 	        if(isset($_POST['publication'])){
 	            if(!empty($_POST['titre']) AND !empty($_POST['contenu'])){
 	                $titre = htmlspecialchars($_POST['titre']);
-	                $contenu = nl2br(htmlspecialchars($_POST['contenu']));
+	                $contenu = htmlspecialchars($_POST['contenu']);
 
 					addBillet($titre, $contenu);
 					echo "L'article a bien été publié...";               
@@ -151,7 +151,7 @@ try{
 
 	        		$titreModifie = htmlspecialchars($_POST['titre']);
 
-                	$contenuModifie = nl2br(htmlspecialchars($_POST['contenu']));
+                	$contenuModifie =htmlspecialchars($_POST['contenu']);
 
                 	UpdateArticle($titreModifie, $contenuModifie, $_GET['id']);
 
@@ -176,24 +176,15 @@ try{
 	    elseif ($_GET['action'] == 'inscription') {
 	        if (isset($_POST['validez'])) {
                 if(!empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['conf-password'])){
+
                     if ($_POST['password'] == $_POST['conf-password']) {
 
                         $pseudo = htmlspecialchars($_POST['pseudo']);
                         $email = htmlspecialchars($_POST['email']);
                         $mdp = sha1($_POST['password']);
+                        $log = '';
+                        addMembre($pseudo, $email, $mdp);
 
-                        //addMembre($pseudo, $email, $mdp);
-
-                        if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$#', $mdp)){
-                        	addMembre($pseudo, $email, $mdp);
-
-                        	echo "succés";
-                        }else{
-                        	require('views/frontend/inscription.php');
-                        	echo "le mot de passe ne correspond pas...";
-                        }
-
-                        //header('location: index.php?action=connexion');
                     }else{
                         throw new Exception("Les mots de passe ne correspondent pas... !");
                     }

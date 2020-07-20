@@ -38,7 +38,7 @@ if(!$_SESSION['motDePasseUt']){
             <div class="container">
                 <h1><?php echo htmlspecialchars($billet['titre']); ?></h1>
                 <div id="date-article"><strong><?php echo $billet['date_billet']; ?></strong></div>
-                <p><?php echo html_entity_decode($billet['contenu']); ?></p> 
+                <p id="para1"><?php echo html_entity_decode($billet['contenu']); ?></p> 
 
                 <div id="commentaire"><h2>Commentaires</h2></div>
             </div>

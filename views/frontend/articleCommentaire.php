@@ -6,7 +6,7 @@ if (!$_SESSION['admin']) {
     $_SESSION['deconnecter'] = "Se connecter";
     $_SESSION['deconnection'] = "index";
 }
-if(!$_SESSION['motDePasseUt'] | !$_SESSION['motDePasse']){
+if(!$_SESSION['motDePasseUt']){
     header('location: index.php?action=connexion');
 }
 ?>
@@ -47,29 +47,11 @@ if(!$_SESSION['motDePasseUt'] | !$_SESSION['motDePasse']){
             {
             ?>
             <div class="container">
-                <p><strong><?php echo htmlspecialchars($comment['auteur']); ?></strong> le <?php echo $comment['date_commentaire']; ?></p>
+                <p><strong><?php echo htmlspecialchars($comment['auteur']); ?></strong> le <?php echo $comment['date_commentaire']; ?> Signalez.</p>
                  
                 <div class="container"> 
                     <p><?php echo nl2br(htmlspecialchars($comment['commentaire'])); ?>
-                    <a class="btn btn-default" role="button" data-toggle="modal" data-target="#modal"><strong style="color: orange;">Signalez.</strong></a></p>
-
-                    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Signaler ce commentaire</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Voulez-vous vraiment signaler ce commentaire ?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                    <a href="index.php?action=signale&amp;idCom=<?= $comment['id'] ?>&amp;billet= <?php echo $billet['id']; ?>" name="signaler" type="button" class="btn btn-primary">Confirmer</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="index.php?action=signale&amp;idCom=<?= $comment['id'] ?>&amp;billet= <?php echo $billet['id']; ?>"><strong id="signaler" >Signalez.</strong></a></p>
                 </div>                 
             </div>
             <?php

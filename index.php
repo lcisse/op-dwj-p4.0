@@ -31,8 +31,13 @@ try{
 	        }
 	    }
 	    elseif($_GET['action'] == 'signale'){
-				commentaireSignale();
+				commentaireSignale($_GET['idCom']);
 		}
+
+		elseif ($_GET['action'] == 'commentaireSignale') {
+	        listCommentaireSignale();
+	    }
+
 		elseif ($_GET['action'] == 'contact'){
 
 			    $nom = htmlspecialchars($_POST['nom']);
@@ -87,10 +92,6 @@ try{
 
 	    elseif ($_GET['action'] == 'commentaires') {
 	        listAdminComments();
-	    }
-
-	    elseif ($_GET['action'] == 'commentaireSignale') {
-	        listCommentaireSignale();
 	    }
 
 	    elseif ($_GET['action'] == 'membres') {

@@ -48,12 +48,22 @@ function addComment($billetId, $auteur, $commentaire)
     }
 }
 
-function commentaireSignale()
+function commentaireSignale($idCommentaire)
 {
     $commentManager = new CommentManager();
-    $commentaireSignale = $commentManager->signaleCommentaire($_GET['idCom']);
+    $commentaireSignale = $commentManager->signaleCommentaire($idCommentaire);
 
     header('Location: index.php?action=billet&billet='.$_GET['billet']);
+}
+
+function listCommentaireSignale()
+{
+   $commentManager = new CommentManager();
+   
+   $selectCommentaireSignale = $commentManager->getCommentaireSignale();
+
+   require('views/backend/commentaireSignale.php');
+
 }
 
 function addMessage($nom, $prenom, $email, $message)
@@ -129,16 +139,6 @@ function listAdminComments()
   $selectCommentaires =  $commentManager->adminGetcomments();
 
   require('views/backend/commentaires.php');
-}
-
-function listCommentaireSignale()
-{
-   $commentManager = new CommentManager();
-   
-   $selectCommentaireSignale = $commentManager->getCommentaireSignale();
-
-   require('views/backend/commentaireSignale.php');
-
 }
 
 function listMembres()
